@@ -26,7 +26,7 @@ export function useLogin() {
         messageSuccess(response.data.message)
         user.value = response.data.data.user
         token.value = response.data.data.token
-        router.push({ name: 'home' })
+        router.push({ name: 'home-admin' })
       }
       return { success: true }
     } catch (error: any) {

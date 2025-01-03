@@ -109,312 +109,23 @@
                 </svg>
             </div>
             <div class="relative">
-                <div class="flex flex-col items-center justify-center sm:-ms-32 sm:flex-row xl:-ms-60">
-                    <div class="mb-2 flex gap-1 text-end text-base leading-5 sm:flex-col xl:text-xl">
-                        <span>It's free </span>
-                        <span>For everyone</span>
-                    </div>
-                    <div class="me-4 ms-2 hidden sm:block text-[#0E1726] dark:text-white rtl:rotate-y-180">
-                        <icon-arrow-wave-left-up class="w-16 xl:w-28" />
-                    </div>
-                    <div class="mb-2 text-center text-2xl font-bold dark:text-white md:text-5xl">Knowledge Base</div>
+                <div class="flex items-center justify-center mb-6">
+                    <img src="/assets/images/logo-unamba.png" alt="..." class="w-50 object-cover" />
                 </div>
-                <p class="mb-9 text-center text-base font-semibold">Search instant answers & questions asked by popular users</p>
+                <div class="mb-8 text-center text-2xl font-bold dark:text-white md:text-5xl">Universidad Nacional Micaela Bastidas de Apurimac</div>
+                <p class="mb-9 text-center text-base font-semibold">Verificación y validación de certificados emitidos por la UNAMBA</p>
                 <form action="" method="" class="mb-6">
                     <div class="relative mx-auto max-w-[580px]">
-                        <input type="text" placeholder="Ask a question" class="form-input py-3 ltr:pr-[100px] rtl:pl-[100px]" />
-                        <button type="button" class="btn btn-primary absolute top-1 shadow-none ltr:right-1 rtl:left-1">Search</button>
+                        <input type="text" placeholder="Ingrese el número de DNI o CI" class="form-input py-3 ltr:pr-[100px] rtl:pl-[100px]" />
+                        <button type="button" class="btn btn-primary absolute top-1 shadow-none ltr:right-1 rtl:left-1">Buscar</button>
                     </div>
                 </form>
                 <div class="flex flex-wrap items-center justify-center gap-2 font-semibold text-[#2196F3] sm:gap-5">
-                    <div class="whitespace-nowrap font-medium text-black dark:text-white">Popular topics :</div>
-                    <div class="flex items-center justify-center gap-2 sm:gap-5">
-                        <a href="javascript:;" class="duration-300 hover:underline"> Sales</a>
-                        <a href="javascript:;" class="duration-300 hover:underline"> Charts</a>
-                        <a href="javascript:;" class="duration-300 hover:underline"> Finance</a>
-                        <a href="javascript:;" class="duration-300 hover:underline"> Trending</a>
-                    </div>
+                    <div class="whitespace-nowrap font-medium text-black dark:text-white">Para verificar la autenticidad de una certificación digital, ingrese el código de certificación:</div>
                 </div>
             </div>
         </div>
-        <div class="mb-12 flex items-center rounded-b-md bg-[#DBE7FF] dark:bg-[#141F31]">
-            <ul class="mx-auto flex items-center gap-5 overflow-auto whitespace-nowrap px-3 py-4.5 xl:gap-8">
-                <li
-                    class="group flex min-w-[120px] cursor-pointer flex-col items-center justify-center gap-4 rounded-md px-8 py-2.5 text-center text-[#506690] duration-300 hover:bg-white hover:text-primary dark:hover:bg-[#1B2E4B]"
-                    :class="{ 'bg-white text-primary dark:bg-[#1B2E4B]': activeTab === 'general' }"
-                    @click="activeTab = 'general'"
-                >
-                    <icon-desktop :fill="true" />
 
-                    <h5 class="font-bold text-black dark:text-white">General</h5>
-                </li>
-                <li
-                    class="group flex min-w-[120px] cursor-pointer flex-col items-center justify-center gap-4 rounded-md px-8 py-2.5 text-center text-[#506690] duration-300 hover:bg-white hover:text-primary dark:hover:bg-[#1B2E4B]"
-                    :class="{ 'bg-white text-primary dark:bg-[#1B2E4B]': activeTab === 'quick-support' }"
-                    @click="activeTab = 'quick-support'"
-                >
-                    <icon-user :fill="true" class="w-8 h-8" />
-
-                    <h5 class="font-bold text-black dark:text-white">Quick Support</h5>
-                </li>
-                <li
-                    class="group flex min-w-[120px] cursor-pointer flex-col items-center justify-center gap-4 rounded-md px-8 py-2.5 text-center text-[#506690] duration-300 hover:bg-white hover:text-primary dark:hover:bg-[#1B2E4B]"
-                    :class="{ 'bg-white text-primary dark:bg-[#1B2E4B]': activeTab === 'free-updates' }"
-                    @click="activeTab = 'free-updates'"
-                >
-                    <icon-box :fill="true" />
-
-                    <h5 class="font-bold text-black dark:text-white">Free Updates</h5>
-                </li>
-                <li
-                    class="group flex min-w-[120px] cursor-pointer flex-col items-center justify-center gap-4 rounded-md px-8 py-2.5 text-center text-[#506690] duration-300 hover:bg-white hover:text-primary dark:hover:bg-[#1B2E4B]"
-                    :class="{ 'bg-white text-primary dark:bg-[#1B2E4B]': activeTab === 'pricing' }"
-                    @click="activeTab = 'pricing'"
-                >
-                    <icon-dollar-sign-circle :fill="true" />
-
-                    <h5 class="font-bold text-black dark:text-white">Pricing</h5>
-                </li>
-                <li
-                    class="group flex min-w-[120px] cursor-pointer flex-col items-center justify-center gap-4 rounded-md px-8 py-2.5 text-center text-[#506690] duration-300 hover:bg-white hover:text-primary dark:hover:bg-[#1B2E4B]"
-                    :class="{ 'bg-white text-primary dark:bg-[#1B2E4B]': activeTab === 'hosting' }"
-                    @click="activeTab = 'hosting'"
-                >
-                    <icon-router :fill="true" />
-
-                    <h5 class="font-bold text-black dark:text-white">Hosting</h5>
-                </li>
-            </ul>
-        </div>
-        <h3 class="mb-8 text-center text-xl font-semibold md:text-2xl">Some common <span class="text-primary">questions</span></h3>
-        <div class="mb-10 grid grid-cols-1 gap-10 md:grid-cols-2">
-            <div class="rounded-md bg-white dark:bg-black">
-                <div class="border-b border-white-light p-6 text-[22px] font-bold dark:border-dark dark:text-white">General topics?</div>
-                <div class="divide-y divide-white-light px-6 py-4.5 dark:divide-dark">
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active1 === 1 }"
-                            @click="active1 === 1 ? (active1 = null) : (active1 = 1)"
-                        >
-                            <span>How to install VRISTO Admin</span>
-                            <span v-if="active1 !== 1" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active1 === 1" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active1 === 1">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active1 === 2 }"
-                            @click="active1 === 2 ? (active1 = null) : (active1 = 2)"
-                        >
-                            <span> Where can I subscribe to your newsletter?</span>
-                            <span v-if="active1 !== 2" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active1 === 2" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active1 === 2">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active1 === 3 }"
-                            @click="active1 === 3 ? (active1 = null) : (active1 = 3)"
-                        >
-                            <span>How to install VRISTO Admin</span>
-                            <span v-if="active1 !== 3" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active1 === 3" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active1 === 3">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active1 === 5 }"
-                            @click="active1 === 5 ? (active1 = null) : (active1 = 5)"
-                        >
-                            <span>How to install VRISTO Admin</span>
-                            <span v-if="active1 !== 5" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active1 === 5" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active1 === 5">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded-md bg-white dark:bg-black">
-                <div class="border-b border-white-light p-6 text-[22px] font-bold dark:border-dark dark:text-white">Quick support & Free update</div>
-                <div class="divide-y divide-white-light px-6 py-4.5 dark:divide-dark">
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active2 === 1 }"
-                            @click="active2 === 1 ? (active2 = null) : (active2 = 1)"
-                        >
-                            <span>How to use Browser Sync</span>
-                            <span v-if="active2 !== 1" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active2 === 1" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active2 === 1">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active2 === 2 }"
-                            @click="active2 === 2 ? (active2 = null) : (active2 = 2)"
-                        >
-                            <span> Sidebar not rendering CSS</span>
-                            <span v-if="active2 !== 2" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active2 === 2" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active2 === 2">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active2 === 3 }"
-                            @click="active2 === 3 ? (active2 = null) : (active2 = 3)"
-                        >
-                            <span>Connect with us Personally</span>
-                            <span v-if="active2 !== 3" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active2 === 3" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active2 === 3">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                    <div>
-                        <div
-                            class="flex cursor-pointer items-center justify-between gap-10 px-2.5 py-2 text-base font-semibold hover:bg-primary-light hover:text-primary dark:text-white dark:hover:bg-[#1B2E4B] dark:hover:text-primary"
-                            :class="{ 'bg-primary-light dark:bg-[#1B2E4B] !text-primary': active2 === 5 }"
-                            @click="active2 === 5 ? (active2 = null) : (active2 = 5)"
-                        >
-                            <span>Compilation Issue</span>
-                            <span v-if="active2 !== 5" class="shrink-0">
-                                <icon-plus-circle :duotone="false" />
-                            </span>
-
-                            <span v-if="active2 === 5" class="shrink-0">
-                                <icon-minus-circle :fill="true" />
-                            </span>
-                        </div>
-                        <vue-collapsible :isOpen="active2 === 5">
-                            <div class="px-1 py-3 font-semibold text-white-dark">
-                                <p>
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                                    put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-                                    wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </p>
-                            </div>
-                        </vue-collapsible>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="panel mt-10 text-center md:mt-20">
             <h3 class="mb-2 text-xl font-bold dark:text-white md:text-2xl">Still need help?</h3>
             <div class="text-lg font-medium text-white-dark">
@@ -422,212 +133,38 @@
             </div>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
                 <button type="button" class="btn btn-primary">Contact Us</button>
-                <button type="button" class="btn btn-primary">Visit our community</button>
             </div>
         </div>
+
+        <!-- Footer -->
         <div
             class="mt-10 flex flex-col-reverse items-center justify-between gap-5 rounded-md bg-gradient-to-tl from-[rgba(234,241,255,0.44)] to-[rgba(234,241,255,0.96)] px-6 py-2.5 dark:from-[rgba(14,23,38,0.44)] dark:to-[#0E1726] md:flex-row lg:mt-20 xl:px-16"
         >
-            <div class="flex-1 py-3.5 text-center md:text-start">
-                <h3 class="mb-2 text-xl font-bold dark:text-white md:text-2xl">Didn’t find any solutions?</h3>
-                <div class="text-lg font-medium text-white-dark">
-                    Loaded with awesome features like documentation, knowledge base forum, domain transfer, affiliates etc.
-                </div>
-                <div class="mt-8 flex justify-center md:justify-start lg:mt-16">
-                    <button type="button" class="btn btn-primary">Raise support tickets</button>
-                </div>
-            </div>
-            <div class="w-52 max-w-xs lg:w-full">
-                <img
-                    src="/assets/images/knowledge/find-solution.svg"
-                    alt="find-solution"
-                    class="w-full object-cover rtl:rotate-y-180 dark:brightness-[2.59] dark:grayscale-[83%]"
-                />
-            </div>
-        </div>
-        <div class="mt-10">
-            <h3 class="mb-6 text-xl font-bold md:text-3xl">Popular Topics</h3>
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-                <div
-                    class="space-y-5 rounded-md border border-white-light bg-white p-5 shadow-[0px_0px_2px_0px_rgba(145,158,171,0.20),0px_12px_24px_-4px_rgba(145,158,171,0.12)] dark:border-[#1B2E4B] dark:bg-black"
-                >
-                    <div class="max-h-56 overflow-hidden rounded-md">
-                        <img src="/assets/images/knowledge/image-1.jpg" alt="..." class="w-full object-cover" />
-                    </div>
-                    <h5 class="text-xl dark:text-white">Excessive sugar is harmful</h5>
-                    <div class="flex">
-                        <div class="me-4 overflow-hidden rounded-full bg-white-dark">
-                            <img src="/assets/images/profile-1.jpeg" class="h-11 w-11 object-cover" alt="profile1" />
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="mb-1.5 font-semibold dark:text-white">Alma Clark</h4>
-                            <p>06 May</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="space-y-5 rounded-md border border-white-light bg-white p-5 shadow-[0px_0px_2px_0px_rgba(145,158,171,0.20),0px_12px_24px_-4px_rgba(145,158,171,0.12)] dark:border-[#1B2E4B] dark:bg-black"
-                >
-                    <div class="max-h-56 overflow-hidden rounded-md">
-                        <img src="/assets/images/knowledge/image-2.jpg" alt="..." class="w-full object-cover" />
-                    </div>
-                    <h5 class="text-xl dark:text-white">Creative Photography</h5>
-                    <div class="flex">
-                        <div class="me-4 overflow-hidden rounded-full bg-white-dark">
-                            <img src="/assets/images/profile-2.jpeg" class="h-11 w-11 object-cover" alt="profile1" />
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="mb-1.5 font-semibold dark:text-white">Alma Clark</h4>
-                            <p>06 May</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="space-y-5 rounded-md border border-white-light bg-white p-5 shadow-[0px_0px_2px_0px_rgba(145,158,171,0.20),0px_12px_24px_-4px_rgba(145,158,171,0.12)] dark:border-[#1B2E4B] dark:bg-black"
-                >
-                    <div class="max-h-56 overflow-hidden rounded-md">
-                        <img src="/assets/images/knowledge/image-3.jpg" alt="..." class="w-full object-cover" />
-                    </div>
-                    <h5 class="text-xl dark:text-white">Plan your next trip</h5>
-                    <div class="flex">
-                        <div class="me-4 overflow-hidden rounded-full bg-white-dark">
-                            <img src="/assets/images/profile-3.jpeg" class="h-11 w-11 object-cover" alt="profile1" />
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="mb-1.5 font-semibold dark:text-white">Alma Clark</h4>
-                            <p>06 May</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="space-y-5 rounded-md border border-white-light bg-white p-5 shadow-[0px_0px_2px_0px_rgba(145,158,171,0.20),0px_12px_24px_-4px_rgba(145,158,171,0.12)] dark:border-[#1B2E4B] dark:bg-black"
-                >
-                    <div class="max-h-56 overflow-hidden rounded-md">
-                        <img src="/assets/images/knowledge/image-4.jpg" alt="..." class="w-full object-cover" />
-                    </div>
-                    <h5 class="text-xl dark:text-white">My latest Vlog</h5>
-                    <div class="flex">
-                        <div class="me-4 overflow-hidden rounded-full bg-white-dark">
-                            <img src="/assets/images/profile-4.jpeg" class="h-11 w-11 object-cover" alt="profile1" />
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="mb-1.5 font-semibold dark:text-white">Alma Clark</h4>
-                            <p>06 May</p>
-                        </div>
-                    </div>
+            <div class="flex-1 py-3.5 text-center justify-center">
+                <div class="text-md font-medium text-white-dark">
+                    Copyright © {{ year }} Desarrollado por la Oficina de Dirección de Innovación y Transferencia Tecnológica - UNAMBA
                 </div>
             </div>
         </div>
 
-        <div class="mt-10 lg:mt-16">
-            <h3 class="mb-6 text-xl font-bold md:text-3xl">Popular Video Tutorial</h3>
-            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-                <template v-for="(item, i) in items" :key="i">
-                    <div
-                        class="space-y-5 rounded-md border border-white-light bg-white p-5 shadow-[0px_0px_2px_0px_rgba(145,158,171,0.20),0px_12px_24px_-4px_rgba(145,158,171,0.12)] dark:border-[#1B2E4B] dark:bg-black"
-                    >
-                        <div class="relative h-[340px] overflow-hidden rounded-md group">
-                            <img :src="item.src" alt="video tutorial" class="h-full w-full object-cover cursor-pointer" @click="modal = true" />
-                            <button
-                                type="button"
-                                class="absolute left-1/2 top-1/2 grid h-[62px] w-[62px] -translate-x-1/2 -translate-y-1/2 place-content-center rounded-full text-white duration-300 group-hover:scale-110"
-                                @click="modal = true"
-                            >
-                                <icon-play-circle class="h-[62px] w-[62px]" :fill="true" />
-                            </button>
-                            <div class="absolute bottom-0 left-0 w-full bg-white/30 px-5 py-[22px] text-center text-xl text-white backdrop-blur-[5px]">
-                                Excessive sugar is harmful
-                            </div>
-                        </div>
-                    </div>
-                </template>
-            </div>
-            <TransitionRoot appear :show="modal" as="template">
-                <Dialog as="div" @close="modal = false" class="relative z-[51]">
-                    <TransitionChild
-                        as="template"
-                        enter="duration-300 ease-out"
-                        enter-from="opacity-0"
-                        enter-to="opacity-100"
-                        leave="duration-200 ease-in"
-                        leave-from="opacity-100"
-                        leave-to="opacity-0"
-                    >
-                        <DialogOverlay class="fixed inset-0 bg-[black]/60" />
-                    </TransitionChild>
-
-                    <div class="fixed inset-0 overflow-y-auto">
-                        <div class="flex min-h-full items-start justify-center px-4 py-8">
-                            <TransitionChild
-                                as="template"
-                                enter="duration-300 ease-out"
-                                enter-from="opacity-0 scale-95"
-                                enter-to="opacity-100 scale-100"
-                                leave="duration-200 ease-in"
-                                leave-from="opacity-100 scale-100"
-                                leave-to="opacity-0 scale-95"
-                            >
-                                <DialogPanel class="relative overflow-hidden w-full max-w-3xl py-8">
-                                    <button
-                                        type="button"
-                                        class="absolute top-4 ltr:right-4 rtl:left-4 text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 outline-none"
-                                        @click="modal = false"
-                                    >
-                                        <icon-x />
-                                    </button>
-                                    <div class="p-5">
-                                        <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" class="w-full h-[250px] md:h-[550px]"></iframe>
-                                    </div>
-                                </DialogPanel>
-                            </TransitionChild>
-                        </div>
-                    </div>
-                </Dialog>
-            </TransitionRoot>
-        </div>
     </div>
 </template>
+
 <script lang="ts" setup>
     import { ref } from 'vue';
-    import VueCollapsible from 'vue-height-collapsible/vue3';
-    import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogOverlay, TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
     import { useMeta } from '@/composables/use-meta';
     import { useAppStore } from '@/stores/index';
-
-    import IconArrowWaveLeftUp from '@/components/icon/icon-arrow-wave-left-up.vue';
     import IconDesktop from '@/components/icon/icon-desktop.vue';
     import IconUser from '@/components/icon/icon-user.vue';
     import IconBox from '@/components/icon/icon-box.vue';
     import IconDollarSignCircle from '@/components/icon/icon-dollar-sign-circle.vue';
     import IconRouter from '@/components/icon/icon-router.vue';
-    import IconPlusCircle from '@/components/icon/icon-plus-circle.vue';
-    import IconMinusCircle from '@/components/icon/icon-minus-circle.vue';
-    import IconPlayCircle from '@/components/icon/icon-play-circle.vue';
-    import IconX from '@/components/icon/icon-x.vue';
 
     const store = useAppStore();
-    useMeta({ title: 'Knowledge Base' });
+    useMeta({ title: 'Seguimiento de Certificados Emitidos Por El Curso de Capacitación DITT' });
 
     const activeTab: any = ref('general');
-    const active1: any = ref(1);
-    const active2: any = ref(1);
-    const modal = ref(false);
-    const items = ref([
-        {
-            src: '/assets/images/knowledge/image-5.jpg',
-            title: 'Excessive sugar is harmful',
-        },
-        {
-            src: '/assets/images/knowledge/image-6.jpg',
-            title: 'Creative Photography',
-        },
-        {
-            src: '/assets/images/knowledge/image-7.jpg',
-            title: 'Plan your next trip',
-        },
-        {
-            src: '/assets/images/knowledge/image-8.jpg',
-            title: 'My latest Vlog',
-        },
-    ]);
+
+    const year = new Date().getFullYear();
+
 </script>

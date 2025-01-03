@@ -285,7 +285,7 @@
       &lt;a
         href=&quot;javascript:;&quot;
         class=&quot;p-3.5 py-2 -mb-[1px] ltr:mr-2 rtl:ml-2 block rounded hover:bg-primary hover:text-white !outline-none transition duration-300&quot;
-        :class=&quot;{ 'bg-primary text-white': selected === 'home' }&quot;
+        :class=&quot;{ 'bg-primary text-white': selected === 'home-admin' }&quot;
         &gt;Home&lt;/a
       &gt;
     &lt;/Tab&gt;

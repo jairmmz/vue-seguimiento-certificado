@@ -7,7 +7,18 @@ import { useAuthStore } from '@/stores/auth';
 
 const routes: RouteRecordRaw[] = [
     // dashboard
-    { path: '/', name: 'home', meta: { requiresAuth: true }, component: HomeView },
+    { 
+        path: '/', 
+        name: 'home', 
+        meta: { layout: 'auth', isGuest: true, requiresAuth: false }, 
+        component: () => import('../views/pages/knowledge-base.vue'), 
+    },
+    { 
+        path: '/admin', 
+        name: 'home-admin', 
+        meta: { requiresAuth: true }, 
+        component: HomeView, 
+    },
     {
         path: '/analytics',
         name: 'analytics',
@@ -552,7 +563,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/pages/knowledge-base',
         name: 'knowledge-base',
-        meta: { requiresAuth: true },
+        meta: { isGuest: true },
         component: () => import(/* webpackChunkName: "pages-knowledge-base" */ '../views/pages/knowledge-base.vue'),
     },
     {
@@ -612,7 +623,7 @@ const routes: RouteRecordRaw[] = [
 
     // authentication
     {
-        path: '/auth/boxed-signin',
+        path: '/login',
         name: 'boxed-signin',
         component: () => import(/* webpackChunkName: "auth-boxed-signin" */ '../views/auth/boxed-signin.vue'),
         meta: { layout: 'auth', isGuest: true },
@@ -687,7 +698,7 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth && !authStore.$state.token) {
         next({ name: 'boxed-signin' });
     } else if (authStore.$state.token && to.meta.isGuest) {
-        next({ name: 'home' });
+        next({ name: 'home-admin' });
     } else {
         next();
     }
