@@ -1,16 +1,68 @@
-# Vue 3 + TypeScript + Vite
+# Vue Seguimiento Certificado
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este proyecto es una aplicación frontend desarrollada con Vue.js 3, TypeScript y Vite, diseñada para integrarse con la API RESTful de Lara Seguimiento Certificado.
 
-## Recommended IDE Setup
+## Requisitos previos
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+Asegúrate de tener instalado lo siguiente en tu sistema:
 
-## Type Support For `.vue` Imports in TS
+- Node.js >= 20
+- npm o Yarn
+- Git
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## Clonar el repositorio
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+Clona el proyecto desde el repositorio de GitHub:
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+```bash
+git clone https://github.com/jairmmz/vue-seguimiento-certificado.git
+cd vue-seguimiento-certificado
+```
+
+## Instalar dependencias
+
+Ejecuta el siguiente comando para instalar las dependencias del proyecto:
+
+```bash
+npm install
+```
+
+## Ejecutar el servidor de desarrollo
+
+Inicia el servidor de desarrollo con el siguiente comando:
+
+```bash
+npm run dev
+```
+
+El servidor estará disponible en [http://localhost:5173](http://localhost:5173).
+
+## Compilar para producción
+
+Para generar los archivos listos para producción, ejecuta:
+
+```bash
+npm run build
+```
+
+Los archivos compilados estarán disponibles en el directorio `dist`.
+
+## Previsualizar la aplicación de producción
+
+Para previsualizar la aplicación compilada para producción:
+
+```bash
+npm run preview
+```
+
+## Scripts útiles
+
+- **Linter:** Verifica errores de linting en el código.
+  ```bash
+  npm run lint
+  ```
+
+- **Formato del código:** Aplica el formato con Prettier.
+  ```bash
+  npm run format
+  ```
