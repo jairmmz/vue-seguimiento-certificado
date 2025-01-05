@@ -3,6 +3,7 @@ import router from '@/router'
 import type { AxiosInstance, InternalAxiosRequestConfig } from 'axios'
 import { useAuthStore } from './stores/auth'
 import { messageError } from './helpers/toastNotification'
+import { HTTP_STATUS } from './constans/httpStatusCodes'
 
 const makeFetch: AxiosInstance = axios.create({
   baseURL: 'http://lara-seguimiento-certificado.test/api/',
@@ -27,9 +28,9 @@ makeFetch.interceptors.response.use(
   (response) => response,
   async (error) => {
     const store = useAuthStore()
-    if (error.response.status === 401 || error.response.status === 403) {
+    if (error.response.status === HTTP_STATUS.UNAUTHORIZED || error.response.status === HTTP_STATUS.FORBIDDEN) {
       store.$reset()
-      messageError('Usuario no autenticado.')
+      messageError('Usuario no autenticado')
       setTimeout(() => {
         router.push({ name: 'boxed-signin' })
       }, 1000)

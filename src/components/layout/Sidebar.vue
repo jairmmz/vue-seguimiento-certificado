@@ -174,27 +174,27 @@
                                     <button
                                         type="button"
                                         class="nav-link group w-full"
-                                        :class="{ active: activeDropdown === 'surveys' }"
-                                        @click="activeDropdown === 'surveys' ? (activeDropdown = null) : (activeDropdown = 'surveys')"
+                                        :class="{ active: activeDropdown === 'participants' }"
+                                        @click="activeDropdown === 'participants' ? (activeDropdown = null) : (activeDropdown = 'participants')"
                                     >
                                         <div class="flex items-center">
                                             <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('surveys')
+                                                $t('participants')
                                             }}</span>
                                         </div>
-                                        <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'surveys' }">
+                                        <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'participants' }">
                                             <icon-caret-down />
                                         </div>
                                     </button>
-                                    <vue-collapsible :isOpen="activeDropdown === 'surveys'">
+                                    <vue-collapsible :isOpen="activeDropdown === 'participants'">
                                         <ul class="sub-menu text-gray-500">
                                             <li>
-                                                <router-link to="/apps/surveys/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
+                                                <router-link to="/apps/participants/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
                                             </li>
                                             <li>
-                                                <router-link to="/apps/surveys/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
+                                                <router-link to="/apps/participants/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
                                             </li>
                                         </ul>
                                     </vue-collapsible>
