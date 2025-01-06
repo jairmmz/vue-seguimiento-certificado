@@ -558,7 +558,7 @@ const routes: RouteRecordRaw[] = [
         path: '/pages/knowledge-base',
         name: 'knowledge-base',
         meta: { isGuest: true },
-        component: () => import(/* webpackChunkName: "pages-knowledge-base" */ '../views/pages/knowledge-base.vue'),
+        component: () => import('../views/pages/knowledge-base.vue'),
     },
     {
         path: '/pages/contact-us-boxed',

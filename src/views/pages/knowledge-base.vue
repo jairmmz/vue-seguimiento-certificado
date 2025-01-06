@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col min-h-screen">
         <div
             class="relative rounded-t-md bg-primary-light bg-[url('/assets/images/knowledge/pattern.png')] bg-contain bg-left-top bg-no-repeat px-5 py-10 dark:bg-black md:px-10"
         >
@@ -114,30 +114,115 @@
                 </div>
                 <div class="mb-8 text-center text-2xl font-bold dark:text-white md:text-5xl">Universidad Nacional Micaela Bastidas de Apurimac</div>
                 <p class="mb-9 text-center text-base font-semibold">Verificación y validación de certificados emitidos por la UNAMBA</p>
-                <form action="" method="" class="mb-6">
+                <form @submit.prevent="handleSearchParticipant()" class="mb-6">
                     <div class="relative mx-auto max-w-[580px]">
-                        <input type="text" placeholder="Ingrese el número de DNI o CI" class="form-input py-3 ltr:pr-[100px] rtl:pl-[100px]" />
-                        <button type="button" class="btn btn-primary absolute top-1 shadow-none ltr:right-1 rtl:left-1">Buscar</button>
+                        <input
+                            type="text"
+                            placeholder="Ingrese el número de DNI o CI"
+                            class="form-input py-3 ltr:pr-[100px] rtl:pl-[100px]"
+                            v-model="form.identification"
+                            required
+                        />
+                        <button type="submit" class="btn btn-primary absolute top-1 shadow-none ltr:right-1 rtl:left-1">
+                            <span
+                                v-if="isLoadingFetch"
+                                class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                            >
+                            </span>
+                            <span>{{ isLoadingFetch ? 'Buscando...' : 'Buscar' }}</span>
+                        </button>
                     </div>
                 </form>
                 <div class="flex flex-wrap items-center justify-center gap-2 font-semibold text-[#2196F3] sm:gap-5">
-                    <div class="whitespace-nowrap font-medium text-black dark:text-white">Para verificar la autenticidad de una certificación digital, ingrese el código de certificación:</div>
+                    <div class="whitespace-nowrap font-medium text-black dark:text-white">
+                        Para verificar la autenticidad de una certificación digital, ingrese el código de certificación:
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="panel mt-10 text-center md:mt-20">
-            <h3 class="mb-2 text-xl font-bold dark:text-white md:text-2xl">Still need help?</h3>
-            <div class="text-lg font-medium text-white-dark">
-                Our specialists are always happy to help. Contact us during standard business hours or email us24/7 and we'll get back to you.
+        <div v-if="participant != null" class="panel mt-10 md:mt-20 mb-10">
+            <h3 class="mt-5 mb-5 text-xl text-center font-bold dark:text-white md:text-2xl">Datos Personales</h3>
+            <div class="flex justify-center lg:flex-row flex-col gap-6 flex-wrap mb-10">
+                <div class="flex justify-between sm:flex-row flex-col gap-6 lg:w-2/3">
+                    <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
+                        <div class="flex items-center w-full justify-start mb-2">
+                            <div class="text-white-dark mr-2">Nombres :</div>
+                            <div>{{ participant.name }}</div>
+                        </div>
+                    </div>
+                    <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
+                        <div class="flex items-center w-full justify-start mb-2">
+                            <div class="text-white-dark mr-2">Apellidos:</div>
+                            <div class="whitespace-nowrap">{{ participant.last_name }}</div>
+                        </div>
+                    </div>
+                    <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
+                        <div class="flex items-center w-full justify-start mb-2">
+                            <div class="text-white-dark mr-2">N° de identificación :</div>
+                            <div class="whitespace-nowrap">{{ participant.identification }}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-                <button type="button" class="btn btn-primary">Contact Us</button>
+
+            <h3 class="mb-2 text-xl text-center font-bold dark:text-white md:text-2xl">Lista de Cursos</h3>
+            <vue3-datatable
+                ref="datatable"
+                :rows="enrollments"
+                :columns="cols"
+                :totalRows="enrollments?.length"
+                :sortable="true"
+                :search="search"
+                paginationInfo="Mostrando {0} a {1} de {2} entradas"
+                noDataContent="No hay datos disponibles"
+                skin=""
+                firstArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                lastArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M11 19L17 12L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> <path opacity="0.5" d="M6.99976 19L12.9998 12L6.99976 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg> '
+                previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+                nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
+            >
+                <template #id="data">
+                    {{ data.value.id }}
+                </template>
+                <template #name="data">
+                    <div class="flex items-center font-semibold">
+                        {{ data.value.name }}
+                    </div>
+                </template>
+                <template #last_name="data">
+                    <div class="flex items-center font-semibold">
+                        {{ data.value.last_name }}
+                    </div>
+                </template>
+                <template #identification="data">
+                    <div class="flex items-center font-semibold">
+                        {{ data.value.identification }}
+                    </div>
+                </template>
+                <template #actions="data">
+                    <div class="flex justify-end gap-x-2">
+                        <button type="button" class="btn btn-info btn-sm">
+                            <icon-eye class="w-4 h-4 mr-1" />
+                            Visualizar
+                        </button>
+                        <button type="button" class="btn btn-success btn-sm">
+                            <icon-download class="w-4 h-4 mr-1" />
+                            Descargar
+                        </button>
+                    </div>
+                </template>
+            </vue3-datatable>
+        </div>
+
+        <div v-else class="flex items-center justify-center mt-10 mb-10">
+            <div class="text-center text-lg font-semibold text-white-dark">
+                {{ firstRenderViewParticipant ? '' : 'No se encontraron resultados' }}
             </div>
         </div>
 
         <!-- Footer -->
-        <div
+        <footer
             class="mt-10 flex flex-col-reverse items-center justify-between gap-5 rounded-md bg-gradient-to-tl from-[rgba(234,241,255,0.44)] to-[rgba(234,241,255,0.96)] px-6 py-2.5 dark:from-[rgba(14,23,38,0.44)] dark:to-[#0E1726] md:flex-row lg:mt-20 xl:px-16"
         >
             <div class="flex-1 py-3.5 text-center justify-center">
@@ -145,26 +230,45 @@
                     Copyright © {{ year }} Desarrollado por la Oficina de Dirección de Innovación y Transferencia Tecnológica - UNAMBA
                 </div>
             </div>
-        </div>
-
+        </footer>
     </div>
 </template>
 
 <script lang="ts" setup>
     import { ref } from 'vue';
     import { useMeta } from '@/composables/use-meta';
-    import { useAppStore } from '@/stores/index';
-    import IconDesktop from '@/components/icon/icon-desktop.vue';
-    import IconUser from '@/components/icon/icon-user.vue';
-    import IconBox from '@/components/icon/icon-box.vue';
-    import IconDollarSignCircle from '@/components/icon/icon-dollar-sign-circle.vue';
-    import IconRouter from '@/components/icon/icon-router.vue';
+    import { useGetParticipant } from './getParticipantDetail';
+    import Vue3Datatable from '@bhplugin/vue3-datatable';
+    import IconEye from '@/components/icon/icon-eye.vue';
+    import IconDownload from '@/components/icon/icon-download.vue';
 
-    const store = useAppStore();
+    const { getParticipantDetail, participant, enrollments, isLoadingFetch } = useGetParticipant();
+
     useMeta({ title: 'Seguimiento de Certificados Emitidos Por El Curso de Capacitación DITT' });
 
-    const activeTab: any = ref('general');
+    const datatable: any = ref(null);
+    const search = ref('');
+
+    const cols = ref([
+        { field: 'courses.name', title: 'Curso', width: '20%' },
+        { field: 'courses.description', title: 'Descripción', width: '25%' },
+        { field: 'courses.start_date', title: 'Fecha Inicio', width: '15%' },
+        { field: 'courses.end_date', title: 'Fecha Fin', width: '15%' },
+        { field: 'type_participant.name', title: 'Calidad', width: '10%' },
+        { field: 'actions', title: 'Certificado', sort: false, headerClass: 'justify-center', width: '15%' },
+    ]);
 
     const year = new Date().getFullYear();
+
+    const form = ref({
+        identification: '',
+    });
+
+    const firstRenderViewParticipant = ref(true);
+
+    const handleSearchParticipant = async () => {
+        await getParticipantDetail(form.value.identification);
+        firstRenderViewParticipant.value = false;
+    };
 
 </script>
