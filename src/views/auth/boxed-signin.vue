@@ -109,56 +109,6 @@
                                 <span>{{ isLoading ? 'Cargando...' : 'Iniciar sesión' }}</span>
                             </button>
                         </form>
-                        <div class="relative my-7 text-center md:mb-9">
-                            <span class="absolute inset-x-0 top-1/2 h-px w-full -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
-                            <span class="relative bg-white px-2 font-bold uppercase text-white-dark dark:bg-dark dark:text-white-light">or</span>
-                        </div>
-                        <div class="mb-10 md:mb-[60px]">
-                            <ul class="flex justify-center gap-3.5 text-white">
-                                <li>
-                                    <a
-                                        href="javascript:"
-                                        class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)"
-                                    >
-                                        <icon-instagram />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="javascript:"
-                                        class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)"
-                                    >
-                                        <icon-facebook-circle />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="javascript:"
-                                        class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)"
-                                    >
-                                        <icon-twitter :fill="true" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="javascript:"
-                                        class="inline-flex h-8 w-8 items-center justify-center rounded-full p-0 transition hover:scale-110"
-                                        style="background: linear-gradient(135deg, rgba(239, 18, 98, 1) 0%, rgba(67, 97, 238, 1) 100%)"
-                                    >
-                                        <icon-google />
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="text-center dark:text-white">
-                            Don't have an account ?
-                            <router-link to="/auth/boxed-signup" class="uppercase text-primary underline transition hover:text-black dark:hover:text-white">
-                                SIGN UP
-                            </router-link>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -171,14 +121,9 @@
     import appSetting from '@/app-setting';
     import { useAppStore } from '@/stores/index';
     import { useMeta } from '@/composables/use-meta';
-
     import IconCaretDown from '@/components/icon/icon-caret-down.vue';
     import IconMail from '@/components/icon/icon-mail.vue';
     import IconLockDots from '@/components/icon/icon-lock-dots.vue';
-    import IconInstagram from '@/components/icon/icon-instagram.vue';
-    import IconFacebookCircle from '@/components/icon/icon-facebook-circle.vue';
-    import IconTwitter from '@/components/icon/icon-twitter.vue';
-    import IconGoogle from '@/components/icon/icon-google.vue';
     import { Login } from './types/auth';
     import { useLogin } from './actions/login';
     import { storeToRefs } from 'pinia';
