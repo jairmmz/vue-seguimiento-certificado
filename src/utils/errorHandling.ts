@@ -1,17 +1,21 @@
-import axios, { AxiosError } from 'axios'
+import { messageError } from '@/helpers/toastNotification';
+import axios, { AxiosError } from 'axios';
 
-export function handleAxiosError(error: unknown): {
-  success: boolean
-  errors?: Record<string, string[]>
-} {
-  if (axios.isAxiosError(error)) {
-    const axiosError = error as AxiosError<{ errors?: Record<string, string[]> }>
-    if (axiosError.response?.status === 422) {
-      return {
-        success: false,
-        errors: axiosError.response.data.errors
-      }
+export function handleAxiosError(error: unknown): void {
+    if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError<{ data?: Record<string, string[]> }>;
+        if (axiosError.response?.status === 422) {
+            const errors = axiosError.response.data.data;
+            if (errors) {
+                const errorList = Object.values(errors)
+                    .flat()
+                    .map((message) => `<li>${message}</li>`)
+                    .join('');
+                
+                const errorHtml = `<ul>${errorList}</ul>`;
+
+                messageError(errorHtml);
+            }
+        }
     }
-  }
-  return { success: false }
 }

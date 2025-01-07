@@ -115,7 +115,7 @@
             text: 'No podrás revertir esto!',
             showCancelButton: true,
             confirmButtonText: 'Eliminar',
-            padding: '2em',
+            cancelButtonText: 'Cancelar',
             customClass: 'sweet-alerts',
         }).then(async (result) => {
             if (result.value) {

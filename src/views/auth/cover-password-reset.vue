@@ -91,7 +91,7 @@
                             </button>
                         </form>
                     </div>
-                    <p class="absolute bottom-6 w-full text-center dark:text-white">© {{ new Date().getFullYear() }}.VRISTO All Rights Reserved.</p>
+                    <p class="absolute bottom-6 w-full text-center dark:text-white">© {{ new Date().getFullYear() }}. UNAMBA todos los derechos reservados.</p>
                 </div>
             </div>
         </div>

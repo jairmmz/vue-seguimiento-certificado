@@ -12,7 +12,7 @@
             {{ participantId ? 'Editar participante' : 'Crear participante' }}
             <span
                 v-if="isLoadingFetch"
-                class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
             >
             </span>
         </h1>
@@ -45,6 +45,7 @@
                         type="text"
                         class="form-input ltr:rounded-l-none rtl:rounded-r-none"
                         v-model="form.identification"
+                        :readonly="isReadonlyIdentification"
                     />
                     <template v-if="isSubmitForm && !$v4.form.identification.$error">
                         <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
@@ -94,7 +95,7 @@
 
 <script setup lang="ts">
     import { useMeta } from '@/composables/use-meta';
-    import { onMounted, ref } from 'vue';
+    import { computed, onMounted, ref } from 'vue';
     import { Participant } from './types/participant';
     import { useCreateParticipant } from './actions/createParticipant';
     import { storeToRefs } from 'pinia';
@@ -114,6 +115,9 @@
     const route = useRoute();
 
     const participantId = parseInt(route.params.id as string);
+    const isReadonlyIdentification = computed(() => {
+        return participantId ? participantId.toString().length > 0 : false;
+    });
     const form = ref<Participant>({} as Participant);
 
     const isSubmitForm = ref(false);
@@ -140,7 +144,6 @@
                 email: participant.value.email,
                 phone: participant.value.phone,
             };
-            console.log(participant);
         }
     };
 
@@ -155,7 +158,6 @@
         } else {
             await createParticipant(form.value);
         }
-        console.log(form.value);
     };
 
     onMounted(() => {

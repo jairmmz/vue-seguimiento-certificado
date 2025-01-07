@@ -1,13 +1,5 @@
 <template>
     <div>
-        <ul class="flex space-x-2 rtl:space-x-reverse">
-            <li>
-                <a href="javascript:;" class="text-primary hover:underline">Dashboard</a>
-            </li>
-            <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
-                <span>Finance</span>
-            </li>
-        </ul>
         <div class="pt-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-6 text-white">
                 <!-- Users Visit -->

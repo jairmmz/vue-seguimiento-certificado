@@ -3,9 +3,10 @@ import { useRouter } from 'vue-router';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
 import { HTTP_STATUS } from '@/constans/httpStatusCodes';
-import { messageError, messageSuccess } from '@/helpers/toastNotification';
+import { messageSuccess } from '@/helpers/toastNotification';
 import { storeToRefs } from 'pinia';
 import { useParticipantStore } from '../store/participant';
+import { handleAxiosError } from '@/utils/errorHandling';
 
 export function useCreateParticipant() {
     const { isLoadingSave } = storeToRefs(useParticipantStore());
@@ -21,7 +22,7 @@ export function useCreateParticipant() {
                 router.push({ name: 'participant-index' });
             }
         } catch (error: any) {
-            messageError(error.response.data.data);
+            handleAxiosError(error);
         } finally {
             isLoadingSave.value = false;
         }
