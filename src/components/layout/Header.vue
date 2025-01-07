@@ -23,14 +23,6 @@
                     <ul class="flex items-center space-x-2 rtl:space-x-reverse dark:text-[#d0d2d6]">
                         <li>
                             <router-link
-                                to="/apps/calendar"
-                                class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60"
-                            >
-                                <icon-calendar />
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link
                                 to="/apps/todolist"
                                 class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60"
                             >
@@ -221,9 +213,6 @@
                         <li>
                             <router-link to="/apps/notes">{{ $t('notes') }}</router-link>
                         </li>
-                        <li>
-                            <router-link to="/apps/scrumboard">{{ $t('scrumboard') }}</router-link>
-                        </li>
                         <li class="relative">
                             <a href="javascript:;"
                                 >{{ $t('invoice') }}
@@ -247,9 +236,6 @@
                                     <router-link to="/apps/invoice/edit">{{ $t('edit') }}</router-link>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <router-link to="/apps/calendar">{{ $t('calendar') }}</router-link>
                         </li>
                     </ul>
                 </li>

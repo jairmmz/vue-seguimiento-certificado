@@ -6,17 +6,17 @@ import { useAuthStore } from '@/stores/auth';
 
 const routes: RouteRecordRaw[] = [
     // dashboard
-    { 
-        path: '/', 
-        name: 'home', 
-        meta: { layout: 'auth', isGuest: true, requiresAuth: false }, 
-        component: () => import('../views/pages/knowledge-base.vue'), 
+    {
+        path: '/',
+        name: 'home',
+        meta: { layout: 'auth', isGuest: true, requiresAuth: false },
+        component: () => import('../views/pages/knowledge-base.vue'),
     },
-    { 
-        path: '/admin', 
-        name: 'home-admin', 
-        meta: { requiresAuth: true }, 
-        component: () => import('../views/finance.vue'), 
+    {
+        path: '/admin',
+        name: 'home-admin',
+        meta: { requiresAuth: true },
+        component: () => import('../views/finance.vue'),
     },
 
     // apps
@@ -43,12 +43,6 @@ const routes: RouteRecordRaw[] = [
         name: 'notes',
         meta: { requiresAuth: true },
         component: () => import(/* webpackChunkName: "apps-notes" */ '../views/apps/notes.vue'),
-    },
-    {
-        path: '/apps/scrumboard',
-        name: 'scrumboard',
-        meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-scrumboard" */ '../views/apps/scrumboard.vue'),
     },
     // invoice
     {
@@ -111,13 +105,7 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
         component: () => import(/* webpackChunkName: "apps-invoice-edit" */ '../views/apps/invoice/edit.vue'),
     },
-    {
-        path: '/apps/calendar',
-        name: 'calendar',
-        meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-calendar" */ '../views/apps/calendar.vue'),
-    },
-    
+
     // pages
     // Página de inicio
     {

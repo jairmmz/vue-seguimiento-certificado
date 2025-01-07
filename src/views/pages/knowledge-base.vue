@@ -141,26 +141,26 @@
             </div>
         </div>
 
-        <div v-if="participant != null" class="panel mt-10 md:mt-20 mb-10">
+        <div v-if="existParticipant" class="panel mt-10 md:mt-20 mb-10">
             <h3 class="mt-5 mb-5 text-xl text-center font-bold dark:text-white md:text-2xl">Datos Personales</h3>
             <div class="flex justify-center lg:flex-row flex-col gap-6 flex-wrap mb-10">
                 <div class="flex justify-between sm:flex-row flex-col gap-6 lg:w-2/3">
                     <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
                         <div class="flex items-center w-full justify-start mb-2">
                             <div class="text-white-dark mr-2">Nombres :</div>
-                            <div>{{ participant.name }}</div>
+                            <div>{{ participant?.name }}</div>
                         </div>
                     </div>
                     <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
                         <div class="flex items-center w-full justify-start mb-2">
                             <div class="text-white-dark mr-2">Apellidos:</div>
-                            <div class="whitespace-nowrap">{{ participant.last_name }}</div>
+                            <div class="whitespace-nowrap">{{ participant?.last_name }}</div>
                         </div>
                     </div>
                     <div class="xl:1/3 lg:w-2/5 sm:w-1/2">
                         <div class="flex items-center w-full justify-start mb-2">
                             <div class="text-white-dark mr-2">N° de identificación :</div>
-                            <div class="whitespace-nowrap">{{ participant.identification }}</div>
+                            <div class="whitespace-nowrap">{{ participant?.identification }}</div>
                         </div>
                     </div>
                 </div>
@@ -169,9 +169,9 @@
             <h3 class="mb-2 text-xl text-center font-bold dark:text-white md:text-2xl">Lista de Cursos</h3>
             <vue3-datatable
                 ref="datatable"
-                :rows="enrollments"
+                :rows="certificates"
                 :columns="cols"
-                :totalRows="enrollments?.length"
+                :totalRows="certificates?.length"
                 :sortable="true"
                 :search="search"
                 paginationInfo="Mostrando {0} a {1} de {2} entradas"
@@ -242,7 +242,7 @@
     import IconEye from '@/components/icon/icon-eye.vue';
     import IconDownload from '@/components/icon/icon-download.vue';
 
-    const { getParticipantDetail, participant, enrollments, isLoadingFetch } = useGetParticipant();
+    const { getParticipantDetail, participant, certificates, isLoadingFetch, existParticipant } = useGetParticipant();
 
     useMeta({ title: 'Seguimiento de Certificados Emitidos Por El Curso de Capacitación DITT' });
 

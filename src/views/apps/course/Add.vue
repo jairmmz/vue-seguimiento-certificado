@@ -101,8 +101,7 @@
     const rules = {
         form: {
             name: { required },
-            last_name: { required },
-            description: {},
+            description: {  },
             start_date: { required },
             end_date: { required },
         },
@@ -135,6 +134,8 @@
             return false;
         }
         if (courseId) {
+            console.log('update');
+            
             await updateCourse(form.value);
         } else {
             await createCourse(form.value);

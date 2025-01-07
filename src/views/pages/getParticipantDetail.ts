@@ -1,4 +1,4 @@
-import { Enrollment, Participant, ParticipantDetailResponse } from '../apps/participant/types/participant';
+import { Certificate, Participant, ParticipantDetailResponse } from '../apps/participant/types/participant';
 import { ref } from 'vue';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
@@ -7,7 +7,8 @@ import { messageError } from '@/helpers/toastNotification';
 
 export function useGetParticipant() {
     const participant = ref<Participant>();
-    const enrollments = ref<Enrollment[]>([]);
+    const certificates = ref<Certificate[]>([]);
+    const existParticipant = ref<boolean>(false);
     const isLoadingFetch = ref(false);
 
     async function getParticipantDetail(identification: string) {
@@ -17,11 +18,9 @@ export function useGetParticipant() {
 
             if (response.data.code === HTTP_STATUS.OK) {
                 participant.value = response.data.data.participant;
-                enrollments.value = response.data.data.enrollments;
-            } else {
-                participant.value = undefined;
-                enrollments.value = [];
+                certificates.value = response.data.data.certificates;
             }
+            existParticipant.value = true
         } catch (error: any) {
             if (error.response?.status === HTTP_STATUS.BAD_REQUEST)
             {
@@ -29,10 +28,13 @@ export function useGetParticipant() {
             } else {
                 messageError('Ha ocurrido un error al obtener el detalle del participante');
             }
+            participant.value = {} as Participant;
+            certificates.value = [];
+            existParticipant.value = false;
         } finally {
             isLoadingFetch.value = false;
         }
     }
 
-    return { getParticipantDetail, participant, enrollments, isLoadingFetch };
+    return { getParticipantDetail, participant, certificates, isLoadingFetch, existParticipant };
 }

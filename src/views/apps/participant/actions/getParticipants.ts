@@ -18,7 +18,9 @@ export function useGetParticipants() {
                 participants.value = response.data.data;
             }
         } catch (error: any) {
-            messageError(error.response.data.data);
+            if (error.response.data.code != HTTP_STATUS.UNAUTHORIZED) {
+                messageError(error.response.data.data);
+            }
         } finally {
             isLoadingFetch.value = false;
         }

@@ -69,17 +69,6 @@
                                         </div>
                                     </router-link>
                                 </li>
-                                <li class="nav-item">
-                                    <router-link to="/apps/scrumboard" class="group" @click="toggleMobileMenu">
-                                        <div class="flex items-center">
-                                            <icon-menu-scrumboard class="group-hover:!text-primary shrink-0" />
-
-                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('scrumboard')
-                                            }}</span>
-                                        </div>
-                                    </router-link>
-                                </li>
 
                                 <!-- Invoice -->
                                 <li class="menu nav-item">
@@ -179,18 +168,7 @@
                                         </ul>
                                     </vue-collapsible>
                                 </li>
-
-                                <li class="nav-item">
-                                    <router-link to="/apps/calendar" class="group" @click="toggleMobileMenu">
-                                        <div class="flex items-center">
-                                            <icon-menu-calendar class="group-hover:!text-primary shrink-0" />
-
-                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('calendar')
-                                            }}</span>
-                                        </div>
-                                    </router-link>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>
