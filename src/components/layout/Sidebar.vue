@@ -118,7 +118,7 @@
                                     </vue-collapsible>
                                 </li>
 
-                                <!-- Encuestas -->
+                                <!-- Participantes -->
                                 <li class="menu nav-item">
                                     <button
                                         type="button"
@@ -144,6 +144,37 @@
                                             </li>
                                             <li>
                                                 <router-link to="/apps/participants/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
+                                            </li>
+                                        </ul>
+                                    </vue-collapsible>
+                                </li>
+
+                                <!-- Participantes -->
+                                <li class="menu nav-item">
+                                    <button
+                                        type="button"
+                                        class="nav-link group w-full"
+                                        :class="{ active: activeDropdown === 'courses' }"
+                                        @click="activeDropdown === 'courses' ? (activeDropdown = null) : (activeDropdown = 'courses')"
+                                    >
+                                        <div class="flex items-center">
+                                            <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
+
+                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
+                                                $t('courses')
+                                            }}</span>
+                                        </div>
+                                        <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'courses' }">
+                                            <icon-caret-down />
+                                        </div>
+                                    </button>
+                                    <vue-collapsible :isOpen="activeDropdown === 'courses'">
+                                        <ul class="sub-menu text-gray-500">
+                                            <li>
+                                                <router-link to="/apps/courses/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
+                                            </li>
+                                            <li>
+                                                <router-link to="/apps/courses/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
                                             </li>
                                         </ul>
                                     </vue-collapsible>

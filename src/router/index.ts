@@ -88,6 +88,24 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/apps/participant/Add.vue'),
     },
     {
+        path: '/apps/courses/index',
+        name: 'course-index',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/course/Index.vue'),
+    },
+    {
+        path: '/apps/courses/add',
+        name: 'course-add',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/course/Add.vue'),
+    },
+    {
+        path: '/apps/courses/edit/:id',
+        name: 'course-edit',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/course/Add.vue'),
+    },
+    {
         path: '/apps/invoice/edit',
         name: 'invoice-edit',
         meta: { requiresAuth: true },
