@@ -24,44 +24,44 @@ const routes: RouteRecordRaw[] = [
         path: '/apps/chat',
         name: 'chat',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-chat" */ '../views/apps/chat.vue'),
+        component: () => import('../views/apps/chat.vue'),
     },
     {
         path: '/apps/mailbox',
         name: 'mailbox',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-mailbox" */ '../views/apps/mailbox.vue'),
+        component: () => import('../views/apps/mailbox.vue'),
     },
     {
         path: '/apps/todolist',
         name: 'todolist',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-todolist" */ '../views/apps/todolist.vue'),
-    },
-    {
-        path: '/apps/notes',
-        name: 'notes',
-        meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-notes" */ '../views/apps/notes.vue'),
+        component: () => import('../views/apps/todolist.vue'),
     },
     // invoice
     {
         path: '/apps/invoice/list',
         name: 'invoice-list',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-invoice-list" */ '../views/apps/invoice/list.vue'),
+        component: () => import('../views/apps/invoice/list.vue'),
     },
     {
         path: '/apps/invoice/preview',
         name: 'invoice-preview',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-invoice-preview" */ '../views/apps/invoice/preview.vue'),
+        component: () => import('../views/apps/invoice/preview.vue'),
     },
     {
         path: '/apps/invoice/add',
         name: 'invoice-add',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-invoice-add" */ '../views/apps/invoice/add.vue'),
+        component: () => import('../views/apps/invoice/add.vue'),
+    },
+    {
+        path: '/apps/invoice/edit',
+        name: 'invoice-edit',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/invoice/edit.vue'),
     },
     {
         path: '/apps/participants/index',
@@ -100,36 +100,55 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/apps/course/Add.vue'),
     },
     {
-        path: '/apps/invoice/edit',
-        name: 'invoice-edit',
+        path: '/apps/certificate-templates/index',
+        name: 'certificate-templates-index',
         meta: { requiresAuth: true },
-        component: () => import(/* webpackChunkName: "apps-invoice-edit" */ '../views/apps/invoice/edit.vue'),
+        component: () => import('../views/apps/certificate_template/Index.vue'),
     },
+    {
+        path: '/apps/certificate-templates/add',
+        name: 'certificate-templates-add',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/certificate_template/Add.vue'),
+    },
+    {
+        path: '/apps/certificate-templates/edit/:id',
+        name: 'certificate-templates-edit',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/certificate_template/Add.vue'),
+    },
+    {
+        path: '/apps/modal/index',
+        name: 'modal',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/modal/Modal.vue'),
+    },
+
 
     // pages
     // Página de inicio
     {
         path: '/pages/error404',
         name: 'error404',
-        component: () => import(/* webpackChunkName: "pages-error404" */ '../views/pages/error404.vue'),
+        component: () => import('../views/pages/error404.vue'),
         meta: { layout: 'auth' },
     },
     {
         path: '/pages/error500',
         name: 'error500',
-        component: () => import(/* webpackChunkName: "pages-error500" */ '../views/pages/error500.vue'),
+        component: () => import('../views/pages/error500.vue'),
         meta: { layout: 'auth' },
     },
     {
         path: '/pages/error503',
         name: 'error503',
-        component: () => import(/* webpackChunkName: "pages-error503" */ '../views/pages/error503.vue'),
+        component: () => import('../views/pages/error503.vue'),
         meta: { layout: 'auth' },
     },
     {
         path: '/pages/maintenence',
         name: 'maintenence',
-        component: () => import(/* webpackChunkName: "pages-maintenence" */ '../views/pages/maintenence.vue'),
+        component: () => import('../views/pages/maintenence.vue'),
         meta: { layout: 'auth', requiresAuth: true },
     },
 
@@ -143,7 +162,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/auth/cover-password-reset',
         name: 'cover-password-reset',
-        component: () => import(/* webpackChunkName: "auth-cover-password-reset" */ '../views/auth/cover-password-reset.vue'),
+        component: () => import('../views/auth/cover-password-reset.vue'),
         meta: { layout: 'auth' },
     },
 ];

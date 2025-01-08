@@ -210,9 +210,6 @@
                         <li>
                             <router-link to="/apps/todolist">{{ $t('todo_list') }}</router-link>
                         </li>
-                        <li>
-                            <router-link to="/apps/notes">{{ $t('notes') }}</router-link>
-                        </li>
                         <li class="relative">
                             <a href="javascript:;"
                                 >{{ $t('invoice') }}
@@ -247,14 +244,10 @@
 <script lang="ts" setup>
     import { ref, onMounted, computed, reactive, watch } from 'vue';
     import { useI18n } from 'vue-i18n';
-
     import appSetting from '@/app-setting';
-
     import { useRoute } from 'vue-router';
     import { useAppStore } from '@/stores/index';
-
     import IconMenu from '@/components/icon/icon-menu.vue';
-    import IconCalendar from '@/components/icon/icon-calendar.vue';
     import IconEdit from '@/components/icon/icon-edit.vue';
     import IconChatNotification from '@/components/icon/icon-chat-notification.vue';
     import IconSearch from '@/components/icon/icon-search.vue';
@@ -262,10 +255,6 @@
     import IconSun from '@/components/icon/icon-sun.vue';
     import IconMoon from '@/components/icon/icon-moon.vue';
     import IconLaptop from '@/components/icon/icon-laptop.vue';
-    import IconMailDot from '@/components/icon/icon-mail-dot.vue';
-    import IconArrowLeft from '@/components/icon/icon-arrow-left.vue';
-    import IconInfoCircle from '@/components/icon/icon-info-circle.vue';
-    import IconBellBing from '@/components/icon/icon-bell-bing.vue';
     import IconUser from '@/components/icon/icon-user.vue';
     import IconLogout from '@/components/icon/icon-logout.vue';
     import IconCaretDown from '@/components/icon/icon-caret-down.vue';
