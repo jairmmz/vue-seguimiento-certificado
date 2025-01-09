@@ -118,6 +118,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/apps/certificate_template/Add.vue'),
     },
     {
+        path: '/apps/certificate-templates/configure/:id',
+        name: 'certificate-templates-configure',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/certificate_template/CertificateDataPosition.vue'),
+    },
+    {
         path: '/apps/modal/index',
         name: 'modal',
         meta: { requiresAuth: true },

@@ -58,7 +58,7 @@
                                 <icon-eye class="w-4 h-4 mr-1" />
                                 Ver
                             </button>
-                            <router-link :to="{ name: 'certificate-templates-edit', params: { id: data.value.id } }">
+                            <router-link :to="{ name: 'certificate-templates-configure', params: { id: data.value.id } }">
                                 <button type="button" class="btn btn-info btn-sm">
                                     <icon-edit class="w-4 h-4 mr-1" />
                                     Configurar

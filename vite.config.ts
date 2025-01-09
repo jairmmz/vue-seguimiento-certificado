@@ -10,6 +10,20 @@ export default defineConfig({
             include: path.resolve(__dirname, './src/locales/**'),
         }),
     ],
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://lara-seguimiento-certificado.test',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
+            },
+            '/storage': {
+                target: 'http://lara-seguimiento-certificado.test',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/storage/, '/storage'),
+            },
+        },
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
