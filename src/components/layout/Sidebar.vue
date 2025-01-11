@@ -158,45 +158,14 @@
                                     </vue-collapsible>
                                 </li>
 
-                                <!-- Plantilla de Certificado -->
-                                <li class="menu nav-item">
-                                    <button
-                                        type="button"
-                                        class="nav-link group w-full"
-                                        :class="{ active: activeDropdown === 'certificate-templates' }"
-                                        @click="activeDropdown === 'certificate-templates' ? (activeDropdown = null) : (activeDropdown = 'certificate-templates')"
-                                    >
-                                        <div class="flex items-center">
-                                            <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
-
-                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('certificate-templates')
-                                            }}</span>
-                                        </div>
-                                        <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'certificate-templates' }">
-                                            <icon-caret-down />
-                                        </div>
-                                    </button>
-                                    <vue-collapsible :isOpen="activeDropdown === 'certificate-templates'">
-                                        <ul class="sub-menu text-gray-500">
-                                            <li>
-                                                <router-link to="/apps/certificate-templates/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
-                                            </li>
-                                            <li>
-                                                <router-link to="/apps/certificate-templates/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
-                                            </li>
-                                        </ul>
-                                    </vue-collapsible>
-                                </li>
-
-                                <!-- Certificado -->
+                                <!-- Plantilla de Registros -->
                                 <li class="nav-item">
-                                    <router-link to="/apps/certificate" class="group" @click="toggleMobileMenu">
+                                    <router-link to="/apps/registration/index" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
-                                            <icon-menu-mailbox class="group-hover:!text-primary shrink-0" />
+                                            <icon-menu-todo class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('certificate')
+                                                $t('registrations')
                                             }}</span>
                                         </div>
                                     </router-link>

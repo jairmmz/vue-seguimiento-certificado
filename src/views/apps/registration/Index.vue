@@ -4,24 +4,7 @@
             <div class="datatable invoice-table">
                 <div class="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
                     <div class="flex items-center gap-2">
-                        <router-link to="/apps/certificate-templates/add" class="btn btn-primary gap-2">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24px"
-                                height="24px"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="w-5 h-5"
-                            >
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                            Agregar Plantilla del Certificado
-                        </router-link>
+                        <h1 class="text-xl font-semibold">Lista de cursos</h1>
                     </div>
                     <div class="ltr:ml-auto rtl:mr-auto">
                         <input v-model="search" type="text" class="form-input" placeholder="Buscar..." />
@@ -31,9 +14,9 @@
                 <vue3-datatable
                     ref="datatable"
                     :loading="isLoadingFetch"
-                    :rows="certificateTemplates"
+                    :rows="registrationCourseParticipants"
                     :columns="cols"
-                    :totalRows="certificateTemplates?.length"
+                    :totalRows="registrationCourseParticipants?.length"
                     :sortable="true"
                     :search="search"
                     paginationInfo="Mostrando {0} a {1} de {2} entradas"
@@ -52,19 +35,33 @@
                             {{ data.value.name }}
                         </div>
                     </template>
+                    <template #number_participants="data">
+                        <div class="flex items-center font-semibold">
+                            {{ data.value.number_participants }}
+                        </div>
+                    </template>
+                    <template #number_organizers="data">
+                        <div class="flex items-center font-semibold">
+                            {{ data.value.number_organizers }}
+                        </div>
+                    </template>
+                    <template #start_date="data">
+                        <div class="flex items-center font-semibold">
+                            {{ extractDateFromISO(data.value.start_date) }}
+                        </div>
+                    </template>
+                    <template #end_date="data">
+                        <div class="flex items-center font-semibold">
+                            {{ extractDateFromISO(data.value.end_date) }}
+                        </div>
+                    </template>
                     <template #actions="data">
                         <div class="flex justify-center gap-x-2">
-                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewCertificateTemplate(data.value)">
+                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewRegistration(data.value)">
                                 <icon-eye class="w-4 h-4 mr-1" />
                                 Ver
                             </button>
-                            <router-link :to="{ name: 'certificate-templates-edit', params: { id: data.value.id } }">
-                                <button type="button" class="btn btn-info btn-sm">
-                                    <icon-edit class="w-4 h-4 mr-1" />
-                                    Configurar
-                                </button>
-                            </router-link>
-                            <router-link :to="{ name: 'certificate-templates-edit', params: { id: data.value.id } }">
+                            <router-link :to="{ name: 'registration-edit', params: { id: data.value.id } }">
                                 <button type="button" class="btn btn-success btn-sm">
                                     <icon-edit class="w-4 h-4 mr-1" />
                                     Editar
@@ -75,13 +72,6 @@
                 </vue3-datatable>
             </div>
         </div>
-
-        <ModalCertificateTemplateView
-            :is-open-modal="showModal"
-            :certificate-template-url="certificateTemplateUrl"
-            :name-certificate-template="nameCertificateTemplate"
-            @close-modal="handleCloseModal"
-        />
     </div>
 </template>
 <script lang="ts" setup>
@@ -90,38 +80,35 @@
     import { useMeta } from '@/composables/use-meta';
     import IconEdit from '@/components/icon/icon-edit.vue';
     import IconEye from '@/components/icon/icon-eye.vue';
-    import { useGetCertificateTemplates } from './actions/getCertificateTemplates';
-    import ModalCertificateTemplateView from './ModalCertificateTemplateView.vue';
-    import { CertificateTemplate } from './types/certificate-template';
+    import { useGetRegistrationCourseParticipants } from './actions/getRegistrations';
 
     useMeta({ title: 'Plantillas de Certificado' });
 
-    const { getCertificateTemplates, certificateTemplates, isLoadingFetch } = useGetCertificateTemplates();
+    const { getRegistrationCourseParticipants, registrationCourseParticipants, isLoadingFetch } = useGetRegistrationCourseParticipants();
 
     const datatable: any = ref(null);
     const search = ref('');
 
-    const cols = ref([
-        { field: 'id', title: 'ID', width: '5%' },
-        { field: 'name', title: 'Nombres', width: '40%' },
-        { field: 'actions', title: 'Acciones', sort: false, headerClass: 'justify-center', width: '25%' },
-    ]);
-
-    const showModal = ref(false);
-    const certificateTemplateUrl = ref('');
-    const nameCertificateTemplate = ref('');
-
-    const handleViewCertificateTemplate = (data: CertificateTemplate) => {
-        certificateTemplateUrl.value = data.template_file_url ?? '';
-        nameCertificateTemplate.value = data.name;
-        showModal.value = true;
+    const extractDateFromISO = (isoDate: string): string => {
+        if (!isoDate) return '';
+        return isoDate.split('T')[0].split('-').reverse().join('/');
     };
 
-    const handleCloseModal = () => {
-        showModal.value = false;
+    const cols = ref([
+        { field: 'id', title: 'ID', width: '5%' },
+        { field: 'name', title: 'Nombres', width: '20%' },
+        { field: 'number_participants', title: 'N° de Participantes', width: '15%' },
+        { field: 'number_organizers', title: 'N° de Ponentes', width: '15%' },
+        { field: 'start_date', title: 'Fecha de Inicio', width: '15%' },
+        { field: 'end_date', title: 'Fecha de Término', width: '15%' },
+        { field: 'actions', title: 'Acciones', sort: false, headerClass: 'justify-center', width: '15%' },
+    ]);
+
+    const handleViewRegistration = (data: any) => {
+        console.log('View registration');
     };
 
     onMounted(async () => {
-        await getCertificateTemplates();
+        await getRegistrationCourseParticipants();
     });
 </script>

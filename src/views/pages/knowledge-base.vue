@@ -260,11 +260,25 @@
 
     const year = new Date().getFullYear();
 
+    const showModal = ref(false);
+    const registrationUrl = ref('');
+    const nameRegistration = ref('');
+
     const form = ref({
         identification: '',
     });
 
     const firstRenderViewParticipant = ref(true);
+
+    // const handleViewRegistration = (data: Registration) => {
+    //     registrationUrl.value = data.template_file_url ?? '';
+    //     nameRegistration.value = data.name;
+    //     showModal.value = true;
+    // };
+
+    // const handleCloseModal = () => {
+    //     showModal.value = false;
+    // };
 
     const handleSearchParticipant = async () => {
         await getParticipantDetail(form.value.identification);
