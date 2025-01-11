@@ -9,11 +9,11 @@ export function useGetCoursesParticipantsNotRegistrations() {
     const coursesParticipantsNotRegistrations = ref<CoursesParticipants>();
     const isLoadingFetchCoursesParticipantsNotRegistrations = ref(false);
 
-    async function getCoursesParticipantsNotRegistrations() {
+    async function getCoursesParticipantsNotRegistrations(coursesId: number) {
         isLoadingFetchCoursesParticipantsNotRegistrations.value = true;
         try {
             const response = await makeFetch.get<CoursesParticipantsResponse, AxiosResponse<CoursesParticipantsResponse>>(
-                '/registrations/courses-participants-not-registrations',
+                `/registrations/courses-participants-not-registrations/${coursesId}`,
             );
 
             if (response.data.code === HTTP_STATUS.OK) {

@@ -4,7 +4,7 @@
             <div class="datatable invoice-table">
                 <div class="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
                     <div class="flex items-center gap-2">
-                        <h1 class="text-xl font-semibold">Lista de cursos</h1>
+                        <h1 class="text-xl font-semibold">Lista de inscripciones por curso</h1>
                     </div>
                     <div class="ltr:ml-auto rtl:mr-auto">
                         <input v-model="search" type="text" class="form-input" placeholder="Buscar..." />
@@ -64,7 +64,7 @@
                             <router-link :to="{ name: 'registration-edit', params: { id: data.value.id } }">
                                 <button type="button" class="btn btn-success btn-sm">
                                     <icon-edit class="w-4 h-4 mr-1" />
-                                    Editar
+                                    Añadir
                                 </button>
                             </router-link>
                         </div>

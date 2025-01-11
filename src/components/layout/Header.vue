@@ -19,62 +19,10 @@
                         <icon-menu class="w-5 h-5" />
                     </a>
                 </div>
-                <div class="ltr:mr-2 rtl:ml-2 hidden sm:block">
-                    <ul class="flex items-center space-x-2 rtl:space-x-reverse dark:text-[#d0d2d6]">
-                        <li>
-                            <router-link
-                                to="/apps/todolist"
-                                class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60"
-                            >
-                                <icon-edit />
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link
-                                to="/apps/chat"
-                                class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60"
-                            >
-                                <icon-chat-notification />
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
                 <div
                     class="sm:flex-1 ltr:sm:ml-0 ltr:ml-auto sm:rtl:mr-0 rtl:mr-auto flex items-center space-x-1.5 lg:space-x-2 rtl:space-x-reverse dark:text-[#d0d2d6]"
                 >
-                    <div class="sm:ltr:mr-auto sm:rtl:ml-auto">
-                        <form
-                            class="sm:relative absolute inset-x-0 sm:top-0 top-1/2 sm:translate-y-0 -translate-y-1/2 sm:mx-0 mx-4 z-10 sm:block hidden"
-                            :class="{ '!block': search }"
-                            @submit.prevent="search = false"
-                        >
-                            <div class="relative">
-                                <input
-                                    type="text"
-                                    class="form-input ltr:pl-9 rtl:pr-9 ltr:sm:pr-4 rtl:sm:pl-4 ltr:pr-9 rtl:pl-9 peer sm:bg-transparent bg-gray-100 placeholder:tracking-widest"
-                                    placeholder="Search..."
-                                />
-                                <button type="button" class="absolute w-9 h-9 inset-0 ltr:right-auto rtl:left-auto appearance-none peer-focus:text-primary">
-                                    <icon-search class="mx-auto" />
-                                </button>
-                                <button
-                                    type="button"
-                                    class="hover:opacity-80 sm:hidden block absolute top-1/2 -translate-y-1/2 ltr:right-2 rtl:left-2"
-                                    @click="search = false"
-                                >
-                                    <icon-x-circle />
-                                </button>
-                            </div>
-                        </form>
-
-                        <button
-                            type="button"
-                            class="search_btn sm:hidden p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:bg-white-light/90 dark:hover:bg-dark/60"
-                            @click="search = !search"
-                        >
-                            <icon-search class="w-4.5 h-4.5 mx-auto dark:text-[#d0d2d6]" />
-                        </button>
-                    </div>
+                    <div class="sm:ltr:mr-auto sm:rtl:ml-auto"></div>
                     <div>
                         <a
                             href="javascript:;"
@@ -184,59 +132,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- horizontal menu -->
-            <ul
-                class="horizontal-menu hidden py-1.5 font-semibold px-6 lg:space-x-1.5 xl:space-x-8 rtl:space-x-reverse bg-white border-t border-[#ebedf2] dark:border-[#191e3a] dark:bg-[#0e1726] text-black dark:text-white-dark"
-            >
-                <li class="menu nav-item relative">
-                    <a href="javascript:;" class="nav-link">
-                        <div class="flex items-center">
-                            <icon-menu-apps class="shrink-0" />
-
-                            <span class="px-2">{{ $t('apps') }}</span>
-                        </div>
-                        <div class="right_arrow">
-                            <icon-caret-down />
-                        </div>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <router-link to="/apps/chat">{{ $t('chat') }}</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/apps/mailbox">{{ $t('mailbox') }}</router-link>
-                        </li>
-                        <li>
-                            <router-link to="/apps/todolist">{{ $t('todo_list') }}</router-link>
-                        </li>
-                        <li class="relative">
-                            <a href="javascript:;"
-                                >{{ $t('invoice') }}
-                                <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
-                                    <icon-caret-down />
-                                </div>
-                            </a>
-                            <ul
-                                class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
-                            >
-                                <li>
-                                    <router-link to="/apps/invoice/list">{{ $t('list') }}</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/apps/invoice/preview">{{ $t('preview') }}</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/apps/invoice/add">{{ $t('add') }}</router-link>
-                                </li>
-                                <li>
-                                    <router-link to="/apps/invoice/edit">{{ $t('edit') }}</router-link>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
         </div>
     </header>
 </template>

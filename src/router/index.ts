@@ -19,25 +19,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/finance.vue'),
     },
 
-    // apps
-    {
-        path: '/apps/chat',
-        name: 'chat',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/chat.vue'),
-    },
-    {
-        path: '/apps/mailbox',
-        name: 'mailbox',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/mailbox.vue'),
-    },
-    {
-        path: '/apps/todolist',
-        name: 'todolist',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/todolist.vue'),
-    },
     // invoice
     {
         path: '/apps/invoice/list',
@@ -104,12 +85,6 @@ const routes: RouteRecordRaw[] = [
         name: 'registration-index',
         meta: { requiresAuth: true },
         component: () => import('../views/apps/registration/Index.vue'),
-    },
-    {
-        path: '/apps/registration/add',
-        name: 'registration-add',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/registration/Add.vue'),
     },
     {
         path: '/apps/registration/edit/:id',
