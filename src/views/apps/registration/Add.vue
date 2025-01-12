@@ -136,9 +136,9 @@
                     </template>
                     <template #actions="data">
                         <div class="flex justify-center gap-x-2">
-                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewRegistrationParticipant(data.value)">
+                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewCertificateParticipant(data.value)">
                                 <icon-eye class="w-4 h-4 mr-1" />
-                                Ver
+                                Certificado
                             </button>
                             <button type="button" class="btn btn-danger btn-sm" @click="showAlertDeleteRegistration(data.value.id)">
                                 <icon-trash-lines class="w-4 h-4 mr-1" />
@@ -149,6 +149,9 @@
                 </vue3-datatable>
             </div>
         </div>
+
+        <!-- Modal Certificado -->
+        <ModalCertificateTemplateView :is-open-modal="isOpenModalCertificate" :registration-id="registrationId" @close-modal="handleCloseModalCertificate" />
     </div>
 </template>
 
@@ -164,15 +167,15 @@
     import { required } from '@vuelidate/validators';
     import { useCreateRegistration } from './actions/createRegistration';
     import { useRegistrationStore } from './store/registration';
-    import { Registration } from './types/registration';
+    import { ParticipantTypeParticipant, Registration } from './types/registration';
     import { useGetCoursesParticipantsNotRegistrations } from './actions/getCoursesParticipantsNotRegistrations';
     import Multiselect from '@suadelabs/vue3-multiselect';
     import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css';
-    import { Course } from '../course/types/course';
     import { Participant, TypeParticipant } from '../participant/types/participant';
     import { useGetRegistrationParticipantsByCourse } from './actions/getRegistrationParticipantsByCourse';
     import Swal from 'sweetalert2';
     import { useDeleteRegistration } from './actions/deleteRegistration';
+    import ModalCertificateTemplateView from './ModalCertificateTemplateView.vue';
 
     useMeta({ title: 'Inscripciones de participantes' });
 
@@ -188,13 +191,19 @@
     const courseId = parseInt(route.params.id as string);
     const form = ref<Registration>({} as Registration);
 
-    const selectedCourse = ref<any>(null);
     const selectedParticipant = ref<any>(null);
     const selectedTypeParticipant = ref<any>(null);
 
     // Datatable
     const datatable: any = ref(null);
     const search = ref('');
+
+    // Modal Certificado
+    const isOpenModalCertificate = ref(false);
+
+    const handleCloseModalCertificate = () => {
+        isOpenModalCertificate.value = false;
+    };
 
     const cols = ref([
         { field: 'id', title: 'ID Inscripción', width: '15%' },
@@ -255,8 +264,11 @@
         $v4.value.form.$reset();
     };
 
-    const handleViewRegistrationParticipant = (data: any) => {
-        console.log('View registration participant');
+    const registrationId = ref(0);
+
+    const handleViewCertificateParticipant = (data: ParticipantTypeParticipant) => {
+        registrationId.value = data.id;
+        isOpenModalCertificate.value = true;
     };
 
     const showAlertDeleteRegistration = async (id: number) => {
