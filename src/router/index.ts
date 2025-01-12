@@ -76,7 +76,7 @@ const routes: RouteRecordRaw[] = [
         path: '/apps/modal/index',
         name: 'modal',
         meta: { requiresAuth: true },
-        component: () => import('../views/apps/modal/Modal.vue'),
+        component: () => import('../views/charts.vue'),
     },
 
 
