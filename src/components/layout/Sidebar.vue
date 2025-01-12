@@ -25,43 +25,6 @@
                     <ul class="relative font-semibold space-y-0.5 p-4 py-0">
                         <li class="nav-item">
                             <ul>
-                                <!-- Invoice -->
-                                <li class="menu nav-item">
-                                    <button
-                                        type="button"
-                                        class="nav-link group w-full"
-                                        :class="{ active: activeDropdown === 'invoice' }"
-                                        @click="activeDropdown === 'invoice' ? (activeDropdown = null) : (activeDropdown = 'invoice')"
-                                    >
-                                        <div class="flex items-center">
-                                            <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
-
-                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('invoice')
-                                            }}</span>
-                                        </div>
-                                        <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'invoice' }">
-                                            <icon-caret-down />
-                                        </div>
-                                    </button>
-                                    <vue-collapsible :isOpen="activeDropdown === 'invoice'">
-                                        <ul class="sub-menu text-gray-500">
-                                            <li>
-                                                <router-link to="/apps/invoice/list" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
-                                            </li>
-                                            <li>
-                                                <router-link to="/apps/invoice/preview" @click="toggleMobileMenu">{{ $t('preview') }}</router-link>
-                                            </li>
-                                            <li>
-                                                <router-link to="/apps/invoice/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
-                                            </li>
-                                            <li>
-                                                <router-link to="/apps/invoice/edit" @click="toggleMobileMenu">{{ $t('edit') }}</router-link>
-                                            </li>
-                                        </ul>
-                                    </vue-collapsible>
-                                </li>
-
                                 <!-- Participantes -->
                                 <li class="menu nav-item">
                                     <button
@@ -147,23 +110,15 @@
 
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
-
     import { useAppStore } from '@/stores/index';
     import VueCollapsible from 'vue-height-collapsible/vue3';
-
     import IconCaretsDown from '@/components/icon/icon-carets-down.vue';
-    import IconMenuChat from '@/components/icon/menu/icon-menu-chat.vue';
-    import IconMenuMailbox from '@/components/icon/menu/icon-menu-mailbox.vue';
     import IconMenuTodo from '@/components/icon/menu/icon-menu-todo.vue';
-    import IconMenuNotes from '@/components/icon/menu/icon-menu-notes.vue';
-    import IconMenuScrumboard from '@/components/icon/menu/icon-menu-scrumboard.vue';
     import IconMenuInvoice from '@/components/icon/menu/icon-menu-invoice.vue';
     import IconCaretDown from '@/components/icon/icon-caret-down.vue';
-    import IconMenuCalendar from '@/components/icon/menu/icon-menu-calendar.vue';
 
     const store = useAppStore();
     const activeDropdown: any = ref('');
-    const subActive: any = ref('');
 
     onMounted(() => {
         const selector = document.querySelector('.sidebar ul a[href="' + window.location.pathname + '"]');

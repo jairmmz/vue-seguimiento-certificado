@@ -88,7 +88,6 @@
     "date_and_range_picker": "Selector de fecha y rango",
     "clipboard": "Tablero de clip",
     "user_and_pages": "Usuarios y páginas",
-    "profile": "Perfiles",
     "account_settings": "Configuraciones de la cuenta",
     "knowledge_base": "Base de conocimientos",
     "contact_form": "Formulario de contacto",
@@ -127,5 +126,6 @@
     "contact_us_cover": "Contáctenos Portada",
     "participants": "Participantes",
     "courses": "Cursos",
-    "registrations": "Inscripciones"
+    "registrations": "Inscripciones",
+    "profile": "Perfil"
 }

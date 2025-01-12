@@ -7,10 +7,10 @@ import { messageError } from '@/helpers/toastNotification';
 
 export function useGetCourse() {
     const course = ref<Course>({} as Course);
-    const isLoadingFetch = ref(false);
+    const isLoadingFetchGetCourse = ref(false);
 
     async function getCourse(id: number) {
-        isLoadingFetch.value = true;
+        isLoadingFetchGetCourse.value = true;
         try {
             const response = await makeFetch.get<CourseResponse, AxiosResponse<CourseResponse>>(`courses/show/${id}`);
 
@@ -20,9 +20,9 @@ export function useGetCourse() {
         } catch (error: any) {
             messageError(error.response.data.data);
         } finally {
-            isLoadingFetch.value = false;
+            isLoadingFetchGetCourse.value = false;
         }
     }
 
-    return { getCourse, course, isLoadingFetch };
+    return { getCourse, course, isLoadingFetchGetCourse };
 }

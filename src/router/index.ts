@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/',
         name: 'home',
-        meta: { layout: 'auth', isGuest: true, requiresAuth: false },
+        meta: { layout: 'auth' },
         component: () => import('../views/pages/knowledge-base.vue'),
     },
     {
@@ -19,31 +19,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/finance.vue'),
     },
 
-    // invoice
-    {
-        path: '/apps/invoice/list',
-        name: 'invoice-list',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/invoice/list.vue'),
-    },
-    {
-        path: '/apps/invoice/preview',
-        name: 'invoice-preview',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/invoice/preview.vue'),
-    },
-    {
-        path: '/apps/invoice/add',
-        name: 'invoice-add',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/invoice/add.vue'),
-    },
-    {
-        path: '/apps/invoice/edit',
-        name: 'invoice-edit',
-        meta: { requiresAuth: true },
-        component: () => import('../views/apps/invoice/edit.vue'),
-    },
+    // Participantes
     {
         path: '/apps/participants/index',
         name: 'participant-index',
@@ -62,6 +38,8 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
         component: () => import('../views/apps/participant/Add.vue'),
     },
+
+    // Cursos
     {
         path: '/apps/courses/index',
         name: 'course-index',
@@ -80,6 +58,8 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
         component: () => import('../views/apps/course/Add.vue'),
     },
+
+    // Inscripciones
     {
         path: '/apps/registration/index',
         name: 'registration-index',

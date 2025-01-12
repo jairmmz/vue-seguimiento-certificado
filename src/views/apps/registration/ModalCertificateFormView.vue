@@ -32,7 +32,11 @@
                             >
                                 <icon-x />
                             </button>
-                            <form @submit.prevent="submitForm()" class="mt-10">
+                            <div class="pt-10">
+                                <h3 class="text-lg font-semibold text-center">Certificado de {{ props.participantName }}</h3>
+                                <hr>
+                            </div>
+                            <form @submit.prevent="submitForm()" class="mt-5">
                                 <div class="flex flex-row justify-center items-end container px-5">
                                     <div class="flex flex-col w-full">
                                         <div for="customCertificateFile">Subir certificado (PDF)</div>
@@ -109,6 +113,7 @@
     const props = defineProps<{
         isOpenModal: boolean;
         registrationId: number;
+        participantName: string;
     }>();
 
     const registrationIdProps = computed(() => props.registrationId);

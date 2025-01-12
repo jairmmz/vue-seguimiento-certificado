@@ -8,14 +8,20 @@
         </li>
     </ul>
     <div class="panel p-5">
-        <h1 class="font-semibold text-2xl border-b-2 mb-4">
-            Inscripciones de participantes
-            <span
-                v-if="isLoadingFetchCoursesParticipantsNotRegistrations"
-                class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
-            >
-            </span>
-        </h1>
+        <div class="flex border-b-2 gap-x-2">
+            <h1 class="font-semibold text-xl">Inscripción:</h1>
+            <div class="flex items-center gap-2">
+                <h2 class="font-semibold text-xl text-[#3c4148] dark:text-[#e0e6ed]">
+                    {{ course.name }}
+                </h2>
+                <span
+                    v-if="isLoadingFetchGetCourse"
+                    class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                >
+                </span>
+            </div>
+        </div>
+
         <form class="space-y-5 my-5" @submit.prevent="submitForm()">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
@@ -83,7 +89,14 @@
             <div class="datatable invoice-table">
                 <div class="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
                     <div class="flex items-center gap-2">
-                        <h1 class="text-xl font-semibold">Lista de participantes inscritos</h1>
+                        <h1 class="text-xl font-semibold">
+                            Lista de participantes inscritos
+                            <span
+                                v-if="isLoadingFetchRegistrationParticipants"
+                                class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                            >
+                            </span>
+                        </h1>
                     </div>
                     <div class="ltr:ml-auto rtl:mr-auto">
                         <input v-model="search" type="text" class="form-input" placeholder="Buscar..." />
@@ -151,7 +164,12 @@
         </div>
 
         <!-- Modal Certificado -->
-        <ModalCertificateTemplateView :is-open-modal="isOpenModalCertificate" :registration-id="registrationId" @close-modal="handleCloseModalCertificate" />
+        <ModalCertificateFormView
+            :is-open-modal="isOpenModalCertificate"
+            :registration-id="registrationId"
+            :participantName="participantName"
+            @close-modal="handleCloseModalCertificate"
+        />
     </div>
 </template>
 
@@ -175,7 +193,8 @@
     import { useGetRegistrationParticipantsByCourse } from './actions/getRegistrationParticipantsByCourse';
     import Swal from 'sweetalert2';
     import { useDeleteRegistration } from './actions/deleteRegistration';
-    import ModalCertificateTemplateView from './ModalCertificateTemplateView.vue';
+    import ModalCertificateFormView from './ModalCertificateFormView.vue';
+    import { useGetCourse } from '../course/actions/getCourse';
 
     useMeta({ title: 'Inscripciones de participantes' });
 
@@ -185,7 +204,8 @@
         useGetCoursesParticipantsNotRegistrations();
     const { getRegistrationParticipantsByCourse, participantsRegistrations, isLoadingFetchRegistrationParticipants } = useGetRegistrationParticipantsByCourse();
     const { createRegistration } = useCreateRegistration();
-    const { deleteRegistration, isLoadingFetchDeleteRegistration } = useDeleteRegistration();
+    const { deleteRegistration } = useDeleteRegistration();
+    const { getCourse, course, isLoadingFetchGetCourse } = useGetCourse();
     const { isLoadingSave } = storeToRefs(useRegistrationStore());
 
     const courseId = parseInt(route.params.id as string);
@@ -265,9 +285,11 @@
     };
 
     const registrationId = ref(0);
+    const participantName = ref<string>('');
 
     const handleViewCertificateParticipant = (data: ParticipantTypeParticipant) => {
         registrationId.value = data.id;
+        participantName.value = `${data.participant_name} ${data.participant_last_name}`;
         isOpenModalCertificate.value = true;
     };
 
@@ -302,10 +324,8 @@
     });
 
     onMounted(() => {
-        // Cargar cursos, participantes y tipos de participantes
         loadCoursesParticipants();
-
-        // Tabla
+        getCourse(courseId);
         loadRegistrationsParticipants(courseId);
     });
 </script>

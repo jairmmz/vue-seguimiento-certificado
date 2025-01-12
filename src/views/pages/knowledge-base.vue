@@ -169,9 +169,9 @@
             <h3 class="mb-2 text-xl text-center font-bold dark:text-white md:text-2xl">Lista de Cursos</h3>
             <vue3-datatable
                 ref="datatable"
-                :rows="certificates"
+                :rows="registrations"
                 :columns="cols"
-                :totalRows="certificates?.length"
+                :totalRows="registrations?.length"
                 :sortable="true"
                 :search="search"
                 paginationInfo="Mostrando {0} a {1} de {2} entradas"
@@ -182,33 +182,11 @@
                 previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                 nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
             >
-                <template #id="data">
-                    {{ data.value.id }}
-                </template>
-                <template #name="data">
-                    <div class="flex items-center font-semibold">
-                        {{ data.value.name }}
-                    </div>
-                </template>
-                <template #last_name="data">
-                    <div class="flex items-center font-semibold">
-                        {{ data.value.last_name }}
-                    </div>
-                </template>
-                <template #identification="data">
-                    <div class="flex items-center font-semibold">
-                        {{ data.value.identification }}
-                    </div>
-                </template>
                 <template #actions="data">
                     <div class="flex justify-end gap-x-2">
-                        <button type="button" class="btn btn-info btn-sm">
+                        <button type="button" class="btn btn-info btn-sm" @click="handleViewCertificate(data.value.certificate)">
                             <icon-eye class="w-4 h-4 mr-1" />
                             Visualizar
-                        </button>
-                        <button type="button" class="btn btn-success btn-sm">
-                            <icon-download class="w-4 h-4 mr-1" />
-                            Descargar
                         </button>
                     </div>
                 </template>
@@ -220,6 +198,8 @@
                 {{ firstRenderViewParticipant ? '' : 'No se encontraron resultados' }}
             </div>
         </div>
+
+        <ModalCertificateView :is-open-modal="isOpenModalCertificate" :certificate="certificate" @close-modal="handleCloseModal" />
 
         <!-- Footer -->
         <footer
@@ -240,9 +220,10 @@
     import { useGetParticipant } from './getParticipantDetail';
     import Vue3Datatable from '@bhplugin/vue3-datatable';
     import IconEye from '@/components/icon/icon-eye.vue';
-    import IconDownload from '@/components/icon/icon-download.vue';
+    import ModalCertificateView from './ModalCertificateView.vue';
+    import { Certificate } from '../apps/participant/types/participant';
 
-    const { getParticipantDetail, participant, certificates, isLoadingFetch, existParticipant } = useGetParticipant();
+    const { getParticipantDetail, participant, registrations, isLoadingFetch, existParticipant } = useGetParticipant();
 
     useMeta({ title: 'Seguimiento de Certificados Emitidos Por El Curso de Capacitación DITT' });
 
@@ -260,29 +241,26 @@
 
     const year = new Date().getFullYear();
 
-    const showModal = ref(false);
-    const registrationUrl = ref('');
-    const nameRegistration = ref('');
-
     const form = ref({
         identification: '',
     });
 
     const firstRenderViewParticipant = ref(true);
 
-    // const handleViewRegistration = (data: Registration) => {
-    //     registrationUrl.value = data.template_file_url ?? '';
-    //     nameRegistration.value = data.name;
-    //     showModal.value = true;
-    // };
+    const certificate = ref<Certificate | null>(null);
+    const isOpenModalCertificate = ref(false);
 
-    // const handleCloseModal = () => {
-    //     showModal.value = false;
-    // };
+    const handleViewCertificate = (data: Certificate) => {
+        certificate.value = data;
+        isOpenModalCertificate.value = true;
+    };
+
+    const handleCloseModal = () => {
+        isOpenModalCertificate.value = false;
+    };
 
     const handleSearchParticipant = async () => {
         await getParticipantDetail(form.value.identification);
         firstRenderViewParticipant.value = false;
     };
-
 </script>

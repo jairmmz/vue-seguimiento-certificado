@@ -1,4 +1,4 @@
-import { Certificate, Participant, ParticipantDetailResponse } from '../apps/participant/types/participant';
+import { Registration, Participant, ParticipantDetailResponse } from '../apps/participant/types/participant';
 import { ref } from 'vue';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
@@ -7,7 +7,7 @@ import { messageError } from '@/helpers/toastNotification';
 
 export function useGetParticipant() {
     const participant = ref<Participant>();
-    const certificates = ref<Certificate[]>([]);
+    const registrations = ref<Registration[]>([]);
     const existParticipant = ref<boolean>(false);
     const isLoadingFetch = ref(false);
 
@@ -18,7 +18,7 @@ export function useGetParticipant() {
 
             if (response.data.code === HTTP_STATUS.OK) {
                 participant.value = response.data.data.participant;
-                certificates.value = response.data.data.certificates;
+                registrations.value = response.data.data.registrations;
             }
             existParticipant.value = true
         } catch (error: any) {
@@ -29,12 +29,12 @@ export function useGetParticipant() {
                 messageError('Ha ocurrido un error al obtener el detalle del participante');
             }
             participant.value = {} as Participant;
-            certificates.value = [];
+            registrations.value = [];
             existParticipant.value = false;
         } finally {
             isLoadingFetch.value = false;
         }
     }
 
-    return { getParticipantDetail, participant, certificates, isLoadingFetch, existParticipant };
+    return { getParticipantDetail, participant, registrations, isLoadingFetch, existParticipant };
 }
