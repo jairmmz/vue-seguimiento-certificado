@@ -116,7 +116,9 @@
             showCancelButton: true,
             confirmButtonText: 'Eliminar',
             cancelButtonText: 'Cancelar',
-            customClass: 'sweet-alerts',
+            customClass: {
+                popup: 'sweet-alerts',
+            },
         }).then(async (result) => {
             if (result.value) {
                 await deleteParticipant(id);

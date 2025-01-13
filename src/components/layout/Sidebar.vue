@@ -37,7 +37,7 @@
                                             <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('participants')
+                                                t('participants')
                                             }}</span>
                                         </div>
                                         <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'participants' }">
@@ -47,10 +47,10 @@
                                     <vue-collapsible :isOpen="activeDropdown === 'participants'">
                                         <ul class="sub-menu text-gray-500">
                                             <li>
-                                                <router-link to="/apps/participants/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
+                                                <router-link to="/apps/participants/index" @click="toggleMobileMenu">{{ t('list') }}</router-link>
                                             </li>
                                             <li>
-                                                <router-link to="/apps/participants/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
+                                                <router-link to="/apps/participants/add" @click="toggleMobileMenu">{{ t('add') }}</router-link>
                                             </li>
                                         </ul>
                                     </vue-collapsible>
@@ -68,7 +68,7 @@
                                             <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('courses')
+                                                t('courses')
                                             }}</span>
                                         </div>
                                         <div :class="{ 'rtl:rotate-90 -rotate-90': activeDropdown !== 'courses' }">
@@ -78,10 +78,10 @@
                                     <vue-collapsible :isOpen="activeDropdown === 'courses'">
                                         <ul class="sub-menu text-gray-500">
                                             <li>
-                                                <router-link to="/apps/courses/index" @click="toggleMobileMenu">{{ $t('list') }}</router-link>
+                                                <router-link to="/apps/courses/index" @click="toggleMobileMenu">{{ t('list') }}</router-link>
                                             </li>
                                             <li>
-                                                <router-link to="/apps/courses/add" @click="toggleMobileMenu">{{ $t('add') }}</router-link>
+                                                <router-link to="/apps/courses/add" @click="toggleMobileMenu">{{ t('add') }}</router-link>
                                             </li>
                                         </ul>
                                     </vue-collapsible>
@@ -94,7 +94,7 @@
                                             <icon-menu-todo class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                $t('registrations')
+                                                t('registrations')
                                             }}</span>
                                         </div>
                                     </router-link>
@@ -116,6 +116,9 @@
     import IconMenuTodo from '@/components/icon/menu/icon-menu-todo.vue';
     import IconMenuInvoice from '@/components/icon/menu/icon-menu-invoice.vue';
     import IconCaretDown from '@/components/icon/icon-caret-down.vue';
+    import { useI18n } from 'vue-i18n';
+
+    const { t } = useI18n();
 
     const store = useAppStore();
     const activeDropdown: any = ref('');

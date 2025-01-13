@@ -17,7 +17,9 @@ export function useDeleteCourse() {
                 messageSuccess(response.data.message);
             }
         } catch (error: any) {
-            messageError(error.response.data.data);
+            if (error.response.data.code != HTTP_STATUS.UNAUTHORIZED) {
+                console.log(error.response.data.data);
+            }
         } finally {
             isLoadingFetch.value = false;
         }

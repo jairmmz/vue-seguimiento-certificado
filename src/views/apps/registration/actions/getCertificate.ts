@@ -20,7 +20,6 @@ export function useGetCertificate() {
             }
         } catch (error: any) {
             handleAxiosError(error);
-            certificate.value = null;
         } finally {
             isLoadingFetchGetCertificate.value = false;
         }

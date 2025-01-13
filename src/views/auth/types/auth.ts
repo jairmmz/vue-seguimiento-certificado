@@ -27,3 +27,20 @@ export interface Register {
   password: string
   password_confirmation: string
 }
+
+export interface UserProfileUpdate {
+  name: string
+  email: string
+}
+
+export interface UserPasswordUpdate {
+  current_password: string
+  password: string
+  password_confirmation: string
+}
+
+export interface UserResponse {
+  message: string
+  data: User;
+  code: number
+}

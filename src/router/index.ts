@@ -72,15 +72,15 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
         component: () => import('../views/apps/registration/Add.vue'),
     },
+
+    // Perfil de Usuario
     {
-        path: '/apps/modal/index',
-        name: 'modal',
+        path: '/usuario/perfil',
+        name: 'user-profile',
         meta: { requiresAuth: true },
-        component: () => import('../views/charts.vue'),
+        component: () => import('../views/auth/Profile.vue'),
     },
 
-
-    // pages
     // Página de inicio
     {
         path: '/pages/error404',

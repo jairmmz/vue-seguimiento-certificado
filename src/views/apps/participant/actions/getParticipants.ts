@@ -3,7 +3,6 @@ import type { Participant, ParticipantsResponse } from '../types/participant';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
 import { HTTP_STATUS } from '@/constans/httpStatusCodes';
-import { messageError } from '@/helpers/toastNotification';
 
 export function useGetParticipants() {
     const participants = ref<Participant[]>([]);
@@ -19,7 +18,7 @@ export function useGetParticipants() {
             }
         } catch (error: any) {
             if (error.response.data.code != HTTP_STATUS.UNAUTHORIZED) {
-                messageError(error.response.data.data);
+                console.log(error.response.data.data);
             }
         } finally {
             isLoadingFetch.value = false;

@@ -96,7 +96,7 @@
     import { useDeleteCourse } from './actions/deleteCourse';
     import Swal from 'sweetalert2';
 
-    useMeta({ title: 'Coursees' });
+    useMeta({ title: 'Cursos' });
 
     const { getCourses, courses, isLoadingFetch } = useGetCourses();
     const { deleteCourse } = useDeleteCourse();
@@ -125,7 +125,9 @@
             showCancelButton: true,
             confirmButtonText: 'Eliminar',
             cancelButtonText: 'Cancelar',
-            customClass: 'sweet-alerts',
+            customClass: {
+                popup: 'sweet-alerts',
+            },
         }).then(async (result) => {
             if (result.value) {
                 await deleteCourse(id);

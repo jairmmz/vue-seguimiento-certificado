@@ -11,7 +11,7 @@
         <h1 class="font-semibold text-2xl border-b-2 mb-4">
             {{ courseId ? 'Editar curso' : 'Crear curso' }}
             <span
-                v-if="isLoadingFetch"
+                v-if="isLoadingFetchGetCourse"
                 class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
             >
             </span>
@@ -90,7 +90,7 @@
 
     const { createCourse } = useCreateCourse();
     const { updateCourse } = useUpdateCourse();
-    const { getCourse, course, isLoadingFetch } = useGetCourse();
+    const { getCourse, course, isLoadingFetchGetCourse } = useGetCourse();
     const { isLoadingSave } = storeToRefs(useCourseStore());
     const route = useRoute();
 

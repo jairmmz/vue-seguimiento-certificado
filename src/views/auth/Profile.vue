@@ -7,145 +7,195 @@
             <span>Perfil</span>
         </li>
     </ul>
-    <div class="panel p-5">
-        <h1 class="font-semibold text-2xl border-b-2 mb-4">
-            {{ courseId ? 'Editar curso' : 'Crear curso' }}
-            <span
-                v-if="isLoadingFetch"
-                class="animate-spin border-2 border-black dark:border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
-            >
-            </span>
-        </h1>
-        <form class="space-y-5" @submit.prevent="submitForm()">
-            <div class="grid grid-cols-1 gap-5">
-                <div :class="{ 'has-error': $v4.form.name.$error, 'has-success': isSubmitForm && !$v4.form.name.$error }">
-                    <label for="customName">Título del curso</label>
-                    <input id="customName" type="text" class="form-input" v-model="form.name" />
-                    <template v-if="isSubmitForm && !$v4.form.name.$error">
+    <div class="panel p-5 my-5">
+        <h1 class="font-semibold text-2xl border-b-2 mb-4">Perfil de usuario</h1>
+        <form class="space-y-5" @submit.prevent="submitUpdateProfile()" autocomplete="off" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                    <label for="customName">Nombre de usuario</label>
+                    <input id="customName" type="text" class="form-input" v-model="formProfile.name" />
+                    <template v-if="isSubmitFormProfile && !$v4Profile.formProfile.name.$error">
                         <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
                     </template>
-                    <template v-if="isSubmitForm && $v4.form.name.$error">
+                    <template v-if="isSubmitFormProfile && $v4Profile.formProfile.name.$error">
                         <p class="text-danger mt-1">Por favor ingrese nombre del curso</p>
                     </template>
                 </div>
-                <div :class="{ 'has-error': $v4.form.description.$error, 'has-success': isSubmitForm && !$v4.form.description.$error }">
-                    <label for="customLastName">Descripción</label>
-                    <textarea class="form-input" name="description" id="description" v-model="form.description" rows="5"></textarea>
-                    <template v-if="isSubmitForm && !$v4.form.description.$error">
+                <div>
+                    <label for="customEmail">Correo electrónico</label>
+                    <input id="customEmail" type="email" class="form-input" v-model="formProfile.email" />
+                    <template v-if="isSubmitFormProfile && !$v4Profile.formProfile.email.$error">
                         <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
                     </template>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div :class="{ 'has-error': $v4.form.start_date.$error, 'has-success': isSubmitForm && !$v4.form.start_date.$error }">
-                        <label for="customeEmail">Fecha de Inicio</label>
-                        <input id="customeEmail" type="date" class="form-input" v-model="form.start_date" />
-                        <template v-if="isSubmitForm && !$v4.form.start_date.$error">
-                            <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
-                        </template>
-                        <template v-if="isSubmitForm && $v4.form.start_date.$error">
-                            <p class="text-danger mt-1">Por favor ingrese la fecha de inicio</p>
-                        </template>
-                    </div>
-                    <div :class="{ 'has-error': $v4.form.end_date.$error, 'has-success': isSubmitForm && !$v4.form.end_date.$error }">
-                        <label for="customeEnd_date">Fecha de Término</label>
-                        <input id="customeEnd_date" type="date" class="form-input" v-model="form.end_date" />
-                        <template v-if="isSubmitForm && !$v4.form.end_date.$error">
-                            <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
-                        </template>
-                        <template v-if="isSubmitForm && $v4.form.end_date.$error">
-                            <p class="text-danger mt-1">Por favor ingrese la fecha de término</p>
-                        </template>
-                    </div>
+                    <template v-if="isSubmitFormProfile && $v4Profile.formProfile.email.$error">
+                        <p class="text-danger mt-1">Por favor ingrese el correo electrónico</p>
+                    </template>
                 </div>
             </div>
-            <div class="ltr:text-right rtl:text-left flex justify-start items-center mt-8">
-                <router-link :to="{ name: 'course-index' }" class="btn btn-outline-danger">Cancelar</router-link>
-                <button type="submit" class="btn btn-primary ltr:ml-4 rtl:mr-4" :disabled="isLoadingSave">
-                    <span
-                        v-if="isLoadingSave"
-                        class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
-                    >
-                    </span>
-                    <span>{{ isLoadingSave ? 'Guardando...' : 'Guardar' }}</span>
-                </button>
+
+            <button type="submit" class="btn btn-primary" :disabled="isLoadingSaveProfile">
+                <span
+                    v-if="isLoadingSaveProfile"
+                    class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                >
+                </span>
+                <span>{{ isLoadingSaveProfile ? 'Guardando...' : 'Guardar' }}</span>
+            </button>
+        </form>
+    </div>
+
+    <div class="panel p-5">
+        <h1 class="font-semibold text-2xl border-b-2 mb-4">Cambiar contraseña</h1>
+        <form class="space-y-5" @submit.prevent="submitUpdatePasswordProfile()" autocomplete="off" novalidate>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div>
+                    <label for="customCurrent_password">Contraseña actual</label>
+                    <input id="customCurrent_password" type="password" class="form-input" v-model="formPassword.current_password" />
+                    <template v-if="isSubmitFormPassword && !$v4Password.formPassword.current_password.$error">
+                        <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
+                    </template>
+                    <template v-if="isSubmitFormPassword && $v4Password.formPassword.current_password.$error">
+                        <p class="text-danger mt-1">La contraseña actual es requerida</p>
+                    </template>
+                </div>
+                <div>
+                    <label for="customPassword">Nueva contraseña</label>
+                    <input id="customPassword" type="password" class="form-input" v-model="formPassword.password" />
+                    <template v-if="isSubmitFormPassword && !$v4Password.formPassword.password.$error">
+                        <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
+                    </template>
+                    <template v-if="isSubmitFormPassword && $v4Password.formPassword.password.$error">
+                        <p class="text-danger mt-1">
+                            {{
+                                $v4Password.formPassword.password.minLength.$invalid
+                                    ? 'La contraseña debe tener al menos 6 caracteres'
+                                    : 'La nueva contraseña es requerida'
+                            }}
+                        </p>
+                    </template>
+                </div>
+                <div>
+                    <label for="customPasswordConfirmation">Confirmar contraseña</label>
+                    <input id="customPasswordConfirmation" type="password" class="form-input" v-model="formPassword.password_confirmation" />
+                    <template v-if="isSubmitFormPassword && !$v4Password.formPassword.password_confirmation.$error">
+                        <p class="text-[#1abc9c] mt-1">¡Se ve bien!</p>
+                    </template>
+                    <!-- Required -->
+                    <template v-if="isSubmitFormPassword && $v4Password.formPassword.password_confirmation.$error">
+                        <p class="text-danger mt-1">{{ $v4Password.formPassword.password_confirmation.required.$invalid ? 'La confirmación de la contraseña es requerida' : '' }}</p>
+                    </template>
+
+
+                    <!-- Min Length -->
+                    <template v-if="isSubmitFormPassword && $v4Password.formPassword.password_confirmation.$error">
+                        <p class="text-danger mt-1">
+                            {{
+                                $v4Password.formPassword.password_confirmation.minLength.$invalid
+                                    ? 'La contraseña debe tener al menos 6 caracteres'
+                                    : ''
+                            }}
+                        </p>
+                    </template>
+
+                    <!-- Same As -->
+                    <template v-if="isSubmitFormPassword && $v4Password.formPassword.password_confirmation.$error">
+                        <p class="text-danger mt-1">
+                            {{ $v4Password.formPassword.password_confirmation.sameAs.$invalid ? 'Las contraseñas no coinciden' : '' }}
+                        </p>
+                    </template>
+                </div>
             </div>
+            <button type="submit" class="btn btn-primary" :disabled="isLoadingSavePassword">
+                <span
+                    v-if="isLoadingSavePassword"
+                    class="animate-spin border-2 border-white border-l-transparent rounded-full w-5 h-5 ltr:mr-4 rtl:ml-4 inline-block align-middle"
+                >
+                </span>
+                <span>{{ isLoadingSavePassword ? 'Guardando...' : 'Guardar' }}</span>
+            </button>
         </form>
     </div>
 </template>
 
 <script setup lang="ts">
     import { useMeta } from '@/composables/use-meta';
-    import { onMounted, ref } from 'vue';
-    import { Course } from './types/course';
-    import { useCreateCourse } from './actions/createCourse';
+    import { computed, onMounted, ref } from 'vue';
     import { storeToRefs } from 'pinia';
-    import { useCourseStore } from './store/course';
-    import { useRoute } from 'vue-router';
-    import { useGetCourse } from './actions/getCourse';
-    import { useUpdateCourse } from './actions/updateCourse';
     import { useVuelidate } from '@vuelidate/core';
-    import { required } from '@vuelidate/validators';
+    import { email, minLength, required, sameAs } from '@vuelidate/validators';
+    import { useUpdateProfileUser } from './actions/updateProfileUser';
+    import { useUpdatePasswordUser } from './actions/updatePasswordUser';
+    import { useAuthStore } from '@/stores/auth';
+    import { UserPasswordUpdate, UserProfileUpdate } from './types/auth';
 
-    useMeta({ title: 'Curso' });
+    useMeta({ title: 'Perfil de usuario' });
 
-    const { createCourse } = useCreateCourse();
-    const { updateCourse } = useUpdateCourse();
-    const { getCourse, course, isLoadingFetch } = useGetCourse();
-    const { isLoadingSave } = storeToRefs(useCourseStore());
-    const route = useRoute();
+    const { updateProfileUser, isLoadingSaveProfile } = useUpdateProfileUser();
+    const { updatePasswordUser, isLoadingSavePassword, isSaveChangePassword } = useUpdatePasswordUser();
+    const { user } = storeToRefs(useAuthStore());
 
-    const courseId = parseInt(route.params.id as string);
-    const form = ref<Course>({} as Course);
+    const formProfile = ref<UserProfileUpdate>({} as UserProfileUpdate);
+    const formPassword = ref<UserPasswordUpdate>({} as UserPasswordUpdate);
 
-    const isSubmitForm = ref(false);
-    const rules = {
-        form: {
+    const isSubmitFormProfile = ref(false);
+    const isSubmitFormPassword = ref(false);
+
+    const rulesProfile = {
+        formProfile: {
             name: { required },
-            description: {  },
-            start_date: { required },
-            end_date: { required },
+            email: { required, email },
         },
     };
 
-    const extractDateFromISO = (isoDate: string): string => {
-        if (!isoDate) return '';
-        return isoDate.split('T')[0]; // Divide en "fecha" y "hora", y toma solo la fecha
+    const rulesPassword = {
+        formPassword: {
+            current_password: { required },
+            password: { required, minLength: minLength(6) },
+            password_confirmation: {
+                required,
+                minLength: minLength(6),
+                sameAs: sameAs(computed(() => formPassword.value.password)),
+            },
+        },
     };
 
-    const $v4 = useVuelidate(rules, { form });
+    const $v4Profile = useVuelidate(rulesProfile, { formProfile });
+    const $v4Password = useVuelidate(rulesPassword, { formPassword });
 
-    const loadCourseData = async (id: number) => {
-        await getCourse(id);
-        if (course) {
-            form.value = {
-                id: course.value.id,
-                name: course.value.name,
-                description: course.value.description,
-                start_date: extractDateFromISO(course.value.start_date),
-                end_date: extractDateFromISO(course.value.end_date),
-            };
-        }
-    };
-
-    const submitForm = async () => {
-        isSubmitForm.value = true;
-        $v4.value.form.$touch();
-        if ($v4.value.form.$invalid) {
+    const submitUpdateProfile = async () => {
+        isSubmitFormProfile.value = true;
+        $v4Profile.value.formProfile.$touch();
+        if ($v4Profile.value.formProfile.$invalid) {
             return false;
         }
-        if (courseId) {
-            console.log('update');
-            
-            await updateCourse(form.value);
-        } else {
-            await createCourse(form.value);
+
+        await updateProfileUser(formProfile.value);
+
+        loadUser();
+    };
+
+    const submitUpdatePasswordProfile = async () => {
+        isSubmitFormPassword.value = true;
+        $v4Password.value.formPassword.$touch();
+        if ($v4Password.value.formPassword.$invalid) {
+            return false;
         }
+
+        await updatePasswordUser(formPassword.value);
+
+        if (isSaveChangePassword.value) {
+            formPassword.value = {} as UserPasswordUpdate;
+            isSubmitFormPassword.value = false;
+            $v4Password.value.$reset();
+        }
+    };
+
+    const loadUser = () => {
+        formProfile.value = { ...user.value };
     };
 
     onMounted(() => {
-        if (courseId) {
-            loadCourseData(courseId);
-        }
+        loadUser();
     });
 </script>
 

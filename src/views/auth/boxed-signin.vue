@@ -146,7 +146,7 @@
         return `/assets/images/flags/${i18n.locale.toUpperCase()}.svg`;
     });
 
-    const handleLogin = async () => {
-        await login(form.value);
+    const handleLogin = () => {
+        login(form.value);
     };
 </script>

@@ -1,17 +1,17 @@
 import { ref } from 'vue';
-import type { Course, CoursesResponse } from '../types/course';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
 import { HTTP_STATUS } from '@/constans/httpStatusCodes';
+import type { Course, CoursesResponse } from '../apps/course/types/course';
 
-export function useGetCourses() {
+export function useGetCoursesWithoutRegistrations() {
     const courses = ref<Course[]>([]);
-    const isLoadingFetch = ref(false);
+    const isLoadingFetchCourses = ref(false);
 
-    async function getCourses() {
-        isLoadingFetch.value = true;
+    async function getCoursesWithoutRegistrations() {
+        isLoadingFetchCourses.value = true;
         try {
-            const response = await makeFetch.get<CoursesResponse, AxiosResponse<CoursesResponse>>('courses');
+            const response = await makeFetch.get<CoursesResponse, AxiosResponse<CoursesResponse>>('home-admin/get-courses-without-registration');
 
             if (response.data.code === HTTP_STATUS.OK) {
                 courses.value = response.data.data;
@@ -21,9 +21,9 @@ export function useGetCourses() {
                 console.log(error.response.data.data);
             }
         } finally {
-            isLoadingFetch.value = false;
+            isLoadingFetchCourses.value = false;
         }
     }
 
-    return { getCourses, courses, isLoadingFetch };
+    return { getCoursesWithoutRegistrations, courses, isLoadingFetchCourses };
 }

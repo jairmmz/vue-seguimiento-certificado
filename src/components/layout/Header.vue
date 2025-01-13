@@ -109,10 +109,10 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <router-link to="/users/profile" class="dark:hover:text-white" @click="close()">
+                                        <router-link to="/usuario/perfil" class="dark:hover:text-white" @click="close()">
                                             <icon-user class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
 
-                                            {{ $t('profile') }}
+                                            {{ t('profile') }}
                                         </router-link>
                                     </li>
                                     <li class="border-t border-white-light dark:border-white-light/10">
@@ -151,6 +151,8 @@
     import { useLogout } from '@/views/auth/actions/logout';
     import { storeToRefs } from 'pinia';
     import { useAuthStore } from '@/stores/auth';
+
+    const { t } = useI18n();
 
     const store = useAppStore();
     const route = useRoute();
