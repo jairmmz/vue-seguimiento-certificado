@@ -94,12 +94,6 @@
                                     </span>
                                 </div>
                             </div>
-                            <div>
-                                <label class="flex cursor-pointer items-center">
-                                    <input type="checkbox" class="form-checkbox bg-white dark:bg-black" />
-                                    <span class="text-white-dark"> Recordar contraseña </span>
-                                </label>
-                            </div>
                             <button type="submit" class="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
                                 <span
                                     v-if="isLoading"
@@ -108,6 +102,11 @@
                                 </span>
                                 <span>{{ isLoading ? 'Cargando...' : 'Iniciar sesión' }}</span>
                             </button>
+                            <div>
+                                <label class="text-center mt-4">
+                                    <router-link :to="{ name: 'cover-password-reset' }" class="text-primary hover:underline">Recuperar contraseña</router-link>
+                                </label>
+                            </div>
                         </form>
                     </div>
                 </div>

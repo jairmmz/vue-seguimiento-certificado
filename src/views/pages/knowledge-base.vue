@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col">
         <div
             class="relative rounded-t-md bg-primary-light bg-[url('/assets/images/knowledge/pattern.png')] bg-contain bg-left-top bg-no-repeat px-5 py-10 dark:bg-black md:px-10"
         >
@@ -193,7 +193,7 @@
             </vue3-datatable>
         </div>
 
-        <div v-else class="flex items-center justify-center mt-10 mb-10">
+        <div v-else class="flex items-center justify-center mt-10 mb-10 min-h-[100px] max-h-[200px]">
             <div class="text-center text-lg font-semibold text-white-dark">
                 {{ firstRenderViewParticipant ? '' : 'No se encontraron resultados' }}
             </div>
@@ -203,9 +203,9 @@
 
         <!-- Footer -->
         <footer
-            class="mt-10 flex flex-col-reverse items-center justify-between gap-5 rounded-md bg-gradient-to-tl from-[rgba(234,241,255,0.44)] to-[rgba(234,241,255,0.96)] px-6 py-2.5 dark:from-[rgba(14,23,38,0.44)] dark:to-[#0E1726] md:flex-row lg:mt-20 xl:px-16"
+            class="mt-10 gap-5 rounded-md bg-gradient-to-tl from-[rgba(234,241,255,0.44)] to-[rgba(234,241,255,0.96)] px-6 py-2.5 dark:from-[rgba(14,23,38,0.44)] dark:to-[#0E1726] md:flex-row lg:mt-20 xl:px-16"
         >
-            <div class="flex-1 py-3.5 text-center justify-center">
+            <div class="py-3.5 text-center text-md font-semibold text-white-dark dark:text-white">
                 <div class="text-md font-medium text-white-dark">
                     Copyright © {{ year }} Desarrollado por la Oficina de Dirección de Innovación y Transferencia Tecnológica - UNAMBA
                 </div>
