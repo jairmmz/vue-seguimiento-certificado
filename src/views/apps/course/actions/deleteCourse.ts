@@ -3,7 +3,8 @@ import type { CourseResponse } from '../types/course';
 import makeFetch from '@/makeFetch';
 import type { AxiosResponse } from 'axios';
 import { HTTP_STATUS } from '@/constans/httpStatusCodes';
-import { messageError, messageSuccess } from '@/helpers/toastNotification';
+import { messageSuccess } from '@/helpers/toastNotification';
+import { handleAxiosError } from '@/utils/errorHandling';
 
 export function useDeleteCourse() {
     const isLoadingFetch = ref(false);
@@ -18,7 +19,7 @@ export function useDeleteCourse() {
             }
         } catch (error: any) {
             if (error.response.data.code != HTTP_STATUS.UNAUTHORIZED) {
-                console.log(error.response.data.data);
+                handleAxiosError(error);
             }
         } finally {
             isLoadingFetch.value = false;
