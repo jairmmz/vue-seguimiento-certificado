@@ -200,8 +200,7 @@
 
     const route = useRoute();
 
-    const { getCoursesParticipantsNotRegistrations, coursesParticipantsNotRegistrations, isLoadingFetchCoursesParticipantsNotRegistrations } =
-        useGetCoursesParticipantsNotRegistrations();
+    const { getCoursesParticipantsNotRegistrations, coursesParticipantsNotRegistrations } = useGetCoursesParticipantsNotRegistrations();
     const { getRegistrationParticipantsByCourse, participantsRegistrations, isLoadingFetchRegistrationParticipants } = useGetRegistrationParticipantsByCourse();
     const { createRegistration } = useCreateRegistration();
     const { deleteRegistration } = useDeleteRegistration();

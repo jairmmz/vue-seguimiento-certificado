@@ -57,14 +57,14 @@
                     </template>
                     <template #actions="data">
                         <div class="flex justify-center gap-x-2">
-                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewRegistration(data.value)">
+                            <button type="button" class="btn btn-warning btn-sm" @click="handleViewRegistrationParticipants(data.value.id)">
                                 <icon-eye class="w-4 h-4 mr-1" />
                                 Ver
                             </button>
                             <router-link :to="{ name: 'registration-edit', params: { id: data.value.id } }">
                                 <button type="button" class="btn btn-success btn-sm">
                                     <icon-edit class="w-4 h-4 mr-1" />
-                                    Añadir
+                                    Inscribir
                                 </button>
                             </router-link>
                         </div>
@@ -72,6 +72,8 @@
                 </vue3-datatable>
             </div>
         </div>
+
+        <ModalRegistrationParticipants :isOpenModal="isOpenModalRegistrationParticipants" :courseId="courseId" @closeModal="handleCloseModalRegistrationParticipants" />
     </div>
 </template>
 <script lang="ts" setup>
@@ -81,6 +83,7 @@
     import IconEdit from '@/components/icon/icon-edit.vue';
     import IconEye from '@/components/icon/icon-eye.vue';
     import { useGetRegistrationCourseParticipants } from './actions/getRegistrations';
+    import ModalRegistrationParticipants from './ModalRegistrationParticipants.vue';
 
     useMeta({ title: 'Plantillas de Certificado' });
 
@@ -104,10 +107,17 @@
         { field: 'actions', title: 'Acciones', sort: false, headerClass: 'justify-center', width: '15%' },
     ]);
 
-    const handleViewRegistration = (data: any) => {
-        console.log('View registration');
+    const isOpenModalRegistrationParticipants = ref(false);
+    const courseId = ref(0);
+
+    const handleViewRegistrationParticipants = (id: number) => {
+        courseId.value = id;
+        isOpenModalRegistrationParticipants.value = true;
     };
 
+    const handleCloseModalRegistrationParticipants = () => {
+        isOpenModalRegistrationParticipants.value = false;
+    };
     onMounted(async () => {
         await getRegistrationCourseParticipants();
     });

@@ -126,6 +126,11 @@ const routes: RouteRecordRaw[] = [
         component: () => import('../views/auth/resetPassword.vue'),
         meta: { layout: 'auth' },
     },
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('../views/pages/error404.vue'),
+        meta: { layout: 'auth' },
+    }
 ];
 
 const router = createRouter({
