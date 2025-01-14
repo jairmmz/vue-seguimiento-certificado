@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', {
     {
       key: 'auth',
       pick: ['user', 'token'],
-      storage: localStorage,
+      storage: sessionStorage,
     }
   ]
 })

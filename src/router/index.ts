@@ -115,9 +115,15 @@ const routes: RouteRecordRaw[] = [
         meta: { layout: 'auth', isGuest: true },
     },
     {
-        path: '/auth/cover-password-reset',
+        path: '/recuperar-contrasenia',
         name: 'cover-password-reset',
         component: () => import('../views/auth/cover-password-reset.vue'),
+        meta: { layout: 'auth' },
+    },
+    {
+        path: '/restablecer-contrasenia',
+        name: 'password-reset',
+        component: () => import('../views/auth/resetPassword.vue'),
         meta: { layout: 'auth' },
     },
 ];

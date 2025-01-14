@@ -5,7 +5,7 @@
                 <!-- Usuarios -->
                 <div class="panel bg-gradient-to-r from-cyan-500 to-cyan-400">
                     <div class="flex justify-between">
-                        <div class="ltr:mr-1 rtl:ml-1 text-md font-semibold">N° de Usuarios</div>
+                        <div class="ltr:mr-1 rtl:ml-1 text-md font-semibold">N° de Participantes</div>
                         <div class="dropdown">
                             <Popper :placement="store.rtlClass === 'rtl' ? 'bottom-start' : 'bottom-end'" offsetDistance="0" class="align-middle">
                                 <button type="button">
