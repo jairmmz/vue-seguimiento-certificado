@@ -5,7 +5,7 @@
                 <div class="flex justify-between items-center px-4 py-3">
                     <router-link to="/admin" class="main-logo flex items-center shrink-0">
                         <img class="w-8 ml-[5px] flex-none" src="/assets/images/logo.svg" alt="" />
-                        <span class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">VRISTO</span>
+                        <span class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">DITT</span>
                     </router-link>
                     <a
                         href="javascript:;"
@@ -34,7 +34,7 @@
                                         @click="activeDropdown === 'participants' ? (activeDropdown = null) : (activeDropdown = 'participants')"
                                     >
                                         <div class="flex items-center">
-                                            <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
+                                            <icon-menu-users class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
                                                 t('participants')
@@ -65,7 +65,7 @@
                                         @click="activeDropdown === 'courses' ? (activeDropdown = null) : (activeDropdown = 'courses')"
                                     >
                                         <div class="flex items-center">
-                                            <icon-menu-invoice class="group-hover:!text-primary shrink-0" />
+                                            <icon-menu-notes class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
                                                 t('courses')
@@ -87,14 +87,27 @@
                                     </vue-collapsible>
                                 </li>
 
-                                <!-- Plantilla de Registros -->
+                                <!-- Inscripciones -->
                                 <li class="nav-item">
                                     <router-link to="/apps/registration/index" class="group" @click="toggleMobileMenu">
+                                        <div class="flex items-center">
+                                            <icon-menu-charts class="group-hover:!text-primary shrink-0" />
+
+                                            <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
+                                                t('registrations')
+                                            }}</span>
+                                        </div>
+                                    </router-link>
+                                </li>
+
+                                <!-- Reportes -->
+                                <li class="nav-item">
+                                    <router-link to="/apps/reports" class="group" @click="toggleMobileMenu">
                                         <div class="flex items-center">
                                             <icon-menu-todo class="group-hover:!text-primary shrink-0" />
 
                                             <span class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{{
-                                                t('registrations')
+                                                t('reports')
                                             }}</span>
                                         </div>
                                     </router-link>
@@ -114,7 +127,9 @@
     import VueCollapsible from 'vue-height-collapsible/vue3';
     import IconCaretsDown from '@/components/icon/icon-carets-down.vue';
     import IconMenuTodo from '@/components/icon/menu/icon-menu-todo.vue';
-    import IconMenuInvoice from '@/components/icon/menu/icon-menu-invoice.vue';
+    import IconMenuNotes from '@/components/icon/menu/icon-menu-notes.vue';
+    import IconMenuUsers from '@/components/icon/menu/icon-menu-users.vue';
+    import IconMenuCharts from '@/components/icon/menu/icon-menu-charts.vue';
     import IconCaretDown from '@/components/icon/icon-caret-down.vue';
     import { useI18n } from 'vue-i18n';
 

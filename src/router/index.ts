@@ -72,6 +72,18 @@ const routes: RouteRecordRaw[] = [
         meta: { requiresAuth: true },
         component: () => import('../views/apps/registration/Add.vue'),
     },
+    {
+        path: '/apps/reports',
+        name: 'reports',
+        meta: { requiresAuth: true },
+        component: () => import('../views/apps/reports/Index.vue'),
+    },
+    {
+        path: '/apps/charts',
+        name: 'charts',
+        meta: { requiresAuth: true },
+        component: () => import('../views/charts.vue'),
+    },
 
     // Perfil de Usuario
     {

@@ -85,7 +85,7 @@
     import { useGetRegistrationCourseParticipants } from './actions/getRegistrations';
     import ModalRegistrationParticipants from './ModalRegistrationParticipants.vue';
 
-    useMeta({ title: 'Plantillas de Certificado' });
+    useMeta({ title: 'Lista de incripciones por curso' });
 
     const { getRegistrationCourseParticipants, registrationCourseParticipants, isLoadingFetch } = useGetRegistrationCourseParticipants();
 

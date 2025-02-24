@@ -101,10 +101,10 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 border-[#e0e6ed] dark:border-[#1b2e4b]">
                 <div class="grid gap-6 xl:grid-flow-row">
                     <!-- Previous Statement -->
-                    <div class="panel overflow-hidden">
+                    <div class="panel overflow-hidden datatable invoice-table">
                         <div class="mb-5 text-lg font-bold">Participantes sin inscripción</div>
                         <vue3-datatable
                             ref="datatableParticipants"
@@ -122,11 +122,23 @@
                             previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                             nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                         >
+                            <template #id="data">
+                                {{ data.value.id }}
+                            </template>
+                            <template #name="data">
+                                {{ data.value.name }}
+                            </template>
+                            <template #last_name="data">
+                                {{ data.value.last_name }}
+                            </template>
+                            <template #identification="data">
+                                {{ data.value.identification }}
+                            </template>
                         </vue3-datatable>
                     </div>
 
                     <!-- Current Statement -->
-                    <div class="panel overflow-hidden">
+                    <div class="panel overflow-hidden datatable invoice-table">
                         <div class="mb-5 text-lg font-bold">Cursos sin inscripción</div>
                         <vue3-datatable
                             ref="datatableCourses"
@@ -144,12 +156,21 @@
                             previousArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M15 5L9 12L15 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                             nextArrow='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>'
                         >
+                            <template #id="data">
+                                {{ data.value.id }}
+                            </template>
+                            <template #name="data">
+                                {{ data.value.name }}
+                            </template>
+                            <template #description="data">
+                                {{ data.value.description }}
+                            </template>
                         </vue3-datatable>
                     </div>
                 </div>
 
                 <!-- Recent Transactions -->
-                <div class="panel">
+                <div class="panel datatable invoice-table">
                     <div class="mb-5 text-lg font-bold">Certificados sin asignar</div>
                     <vue3-datatable
                         ref="datatableRegistrations"

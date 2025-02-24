@@ -6,7 +6,7 @@ import { messageError } from './helpers/toastNotification';
 import { HTTP_STATUS } from './constans/httpStatusCodes';
 
 const makeFetch: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: 'http://lara-seguimiento-certificado.test/api/',
 });
 
 makeFetch.interceptors.request.use(

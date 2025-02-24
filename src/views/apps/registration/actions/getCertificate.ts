@@ -3,7 +3,6 @@ import makeFetch from '@/makeFetch';
 import type { CertificateDetail, CertificateDetailResponse } from '../types/certificate';
 import type { AxiosResponse } from 'axios';
 import { HTTP_STATUS } from '@/constans/httpStatusCodes';
-import { messageSuccess } from '@/helpers/toastNotification';
 import { handleAxiosError } from '@/utils/errorHandling';
 
 export function useGetCertificate() {
